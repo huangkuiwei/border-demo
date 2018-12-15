@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sync修饰符</title>
+  <script src="../../js/Vue-2.5.17.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!--当我们用一个对象同时设置多个 prop 的时候，也可以将这个 .sync 修饰符和 v-bind 配合使用：-->
+    <com-a v-bind.sync="obj"></com-a>
+    <p>姓名：{{obj.name}}</p>
+  </div>
+  <template id="com-a">
+    <div>
+      <input type="text" v-model="newName" @keydown.enter="changeValue">
+      <button @click="changeValue">修改姓名</button>
+    </div>
+  </template>
+
+  <script>
+    Vue.component('com-a', {
+      //这样会把对象中的每一个属性都作为一个独立的 prop 传进去，然后各自添加用于更新的 v-on 监听器。
+      props: ['name', 'age', 'address'],
+      data() {
+        return {
+          newName: ''
+        }
+      },
+      template: '#com-a',
+      methods: {
+        changeValue() {
+          //类似于v-model
+          this.$emit('update:name', this.newName);
+          this.newName = ''
+        }
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          name: 'huangkuiwei',
+          age: 24,
+          address: '长沙'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
