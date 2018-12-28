@@ -91,12 +91,6 @@
             this.prizeList.map(item => {
               item.active = false;
             });
-            this.prizeList.map((item, index) => {
-              //把当前奖品点亮
-              if (index === prizeIndex) {
-                this.prizeList[index].active = true;
-              }
-            });
             //点亮了最后一个奖品
             if (prizeIndex === 7) {
               //重新初始化
@@ -108,6 +102,15 @@
               //开启新的定时器，这样的目的是使转圈的速度越来越慢
               timer = setInterval(fn, 150 * count)
             }
+            prizeIndex += 1;
+            this.prizeList.map((item, index) => {
+              //把当前奖品点亮
+              if (index === prizeIndex) {
+                this.prizeList[index].active = true;
+              }
+            });
+            console.log('prizeIndex：' + prizeIndex);
+            console.log('prize：' + prize);
             //定义要转的圈数和要中的奖品
             if (count === 3 && prizeIndex === prize) {
               clearInterval(timer);
@@ -120,7 +123,6 @@
               //开关
               this.drawing = false;
             }
-            prizeIndex += 1
           };
           //开启抽奖
           let timer = setInterval(fn, 50)
