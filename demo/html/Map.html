@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map</title>
+</head>
+<body>
+  <script>
+    /*
+    Map结构提供了“值—值”的对应，是一种更完善的Hash结构实现。如果你需要“键值对”的数据结构，Map比Object更合适。
+    它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+    注意：
+      1.如果Map的键是一个简单类型的值（数字、字符串、布尔值），则只要两个值严格相等，Map将其视为一个键，包括0和-0。
+      2.另外，虽然NaN不严格相等于自身，但Map将其视为同一个键。
+    实例属性和方法：size、set、get、has、delete、clear
+    遍历方法：keys()、values()、entries()、forEach()
+     */
+    let a = ['zhangsan', 'lisi'];
+    let m1 = new Map([['name', 'huang'], ['age', 34], [[1, 2], 3], [{address: '湖南省'}, '长沙市']]);
+    let m2 = new Map([[a, 'name']]);
+    console.log(m1);     //Map(4) {"name" => "huang", "age" => 34, [1, 2] => 3, {address: '湖南省'} => "长沙市"}
+    console.log(m1.get('name'));                 //huang
+    console.log(m1.get([1, 2]));                 //undefined
+    console.log(m1.get({address: '湖南省'}));    //undefined
+    console.log(m2.get(a))                       //name
+  </script>
+</body>
+</html>
