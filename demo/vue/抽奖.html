@@ -23,6 +23,7 @@
       margin: 8px 0;
       background: #cccccc;
       display: inline-block;
+      cursor: pointer;
     }
     .touch {
       font-size: 35px;
@@ -83,6 +84,8 @@
           let prizeIndex = 0;
           //转的圈数
           let count = 0;
+          //随机抽取奖品
+          let prize = Math.floor(Math.random() * 8);
           const fn = () => {
             //在下一个奖品点亮之前先把所有的奖品变暗
             this.prizeList.map(item => {
@@ -106,7 +109,7 @@
               timer = setInterval(fn, 150 * count)
             }
             //定义要转的圈数和要中的奖品
-            if (count === 3 && prizeIndex === 6) {
+            if (count === 3 && prizeIndex === prize) {
               clearInterval(timer);
               //中奖提示
               if (this.prizeList[prizeIndex].prizeId) {
