@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>抽奖</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    div {
+      border: 1px solid #cccccc;
+      width: 340px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 100px auto;
+    }
+    p {
+      height: 100px;
+      width: 100px;
+      margin: 8px 0;
+      background: #cccccc;
+      display: inline-block;
+    }
+    .touch {
+      font-size: 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    p.active {
+      background: #ffff00;
+    }
+    p:not(.touch) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p :class="{active:prizeList[0].active}">{{prizeList[0].name}}</p>
+    <p :class="{active:prizeList[1].active}">{{prizeList[1].name}}</p>
+    <p :class="{active:prizeList[2].active}">{{prizeList[2].name}}</p>
+    <p :class="{active:prizeList[7].active}">{{prizeList[7].name}}</p>
+    <p class="touch" @click="getPrize">
+      <span>点击</span>
+      <span>抽奖</span>
+    </p>
+    <p :class="{active:prizeList[3].active}">{{prizeList[3].name}}</p>
+    <p :class="{active:prizeList[6].active}">{{prizeList[6].name}}</p>
+    <p :class="{active:prizeList[5].active}">{{prizeList[5].name}}</p>
+    <p :class="{active:prizeList[4].active}">{{prizeList[4].name}}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        prizeList: [
+          {id: 0, prizeId: 1, name: 'iphone XS', active: false},
+          {id: 1, prizeId: 2, name: '积分100', active: false},
+          {id: 2, prizeId: null, name: '谢谢参与', active: false},
+          {id: 3, prizeId: 3, name: '格力空调', active: false},
+          {id: 4, prizeId: 4, name: '积分200', active: false},
+          {id: 5, prizeId: null, name: '谢谢参与', active: false},
+          {id: 6, prizeId: 5, name: '现金1000', active: false},
+          {id: 7, prizeId: null, name: '谢谢参与', active: false}
+        ],
+        drawing: false
+      },
+      methods: {
+        getPrize() {
+          if (this.drawing) {
+            return
+          }
+          //drawing => 抽奖开关，禁止用户再抽奖过程中重复点击抽奖
+          this.drawing = true;
+          //初始化
+          let prizeIndex = 0;
+          //转的圈数
+          let count = 0;
+          const fn = () => {
+            //在下一个奖品点亮之前先把所有的奖品变暗
+            this.prizeList.map(item => {
+              item.active = false;
+            });
+            this.prizeList.map((item, index) => {
+              //把当前奖品点亮
+              if (index === prizeIndex) {
+                this.prizeList[index].active = true;
+              }
+            });
+            //点亮了最后一个奖品
+            if (prizeIndex === 7) {
+              //重新初始化
+              prizeIndex = -1;
+              //圈数加一
+              count += 1;
+              //停止当前定时器
+              clearInterval(timer);
+              //开启新的定时器，这样的目的是使转圈的速度越来越慢
+              timer = setInterval(fn, 150 * count)
+            }
+            //定义要转的圈数和要中的奖品
+            if (count === 3 && prizeIndex === 6) {
+              clearInterval(timer);
+              //中奖提示
+              if (this.prizeList[prizeIndex].prizeId) {
+                alert('恭喜中奖了,奖品为' + this.prizeList[prizeIndex].name);
+              } else {
+                alert('很抱歉，没有中奖')
+              }
+              //开关
+              this.drawing = false;
+            }
+            prizeIndex += 1
+          };
+          //开启抽奖
+          let timer = setInterval(fn, 50)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
