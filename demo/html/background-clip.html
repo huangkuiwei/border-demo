@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>background-clip</title>
+  <style>
+    div {
+      /*width: 200px;*/
+      border: 20px dashed #ccc;
+      padding: 20px;
+      background-color: red;
+      /* 默认 */
+      /*background-clip: border-box;*/
+      /*background-clip: padding-box;*/
+      background-clip: content-box;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>这是标题</h1>
+    <p>这是一段文本</p>
+  </div>
+</body>
+</html>
