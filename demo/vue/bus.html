@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bus</title>
+  <script src="../../js/Vue-2.5.17.js"></script>
+</head>
+<body>
+  <div id="app">
+    <com-a></com-a>
+    <com-b></com-b>
+  </div>
+
+  <script>
+    Vue.component('com-a', {
+      template: `<div><button @click="$root.$emit('busDemo','Hello World')">按钮</button></div>`
+    });
+
+    Vue.component('com-b', {
+      template: `<div>com-b</div>`,
+      created() {
+        this.$root.$on('busDemo', message => {
+          alert(message)
+        })
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      created() {
+        this.$on('busDemo', message => {
+          alert(message)
+        })
+      }
+    })
+  </script>
+</body>
+</html>
