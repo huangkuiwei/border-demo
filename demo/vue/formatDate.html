@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>formatDate</title>
+  <script src="../../js/Vue-2.5.17.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p v-if="isFinish">已结束</p>
+    <p v-else>{{surplusTime | formatDate}}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        nowTime: Date.now(),
+        endTime: '2019/04/2 11:12:00',
+        surplusTime: null,
+        isFinish: false
+      },
+      created() {
+        this.surplusTime = new Date(this.endTime) - this.nowTime;
+        if (this.surplusTime > 0) {
+          setInterval(() => {
+            this.surplusTime -= 1000
+          }, 1000)
+        } else {
+          this.isFinish = true
+        }
+      },
+      watch: {
+        surplusTime(value) {
+          if (value < 0) {
+            this.isFinish = true
+          }
+        }
+      },
+      filters: {
+        formatDate(value) {
+          let day = Math.floor(value / 1000 / 60 / 60 / 24);
+          let hours = Math.floor((value / 1000 / 60 / 60 / 24 - day) * 24);
+          let minutes = Math.floor(((value / 1000 / 60 / 60 / 24 - day) * 24 - hours) * 60);
+          let seconds = Math.floor((((value / 1000 / 60 / 60 / 24 - day) * 24 - hours) * 60 - minutes) * 60);
+          return `${day}天${hours}时${minutes}分${seconds}秒`
+        }
+      }
+    })
+  </script>
+</body>
+</html>
