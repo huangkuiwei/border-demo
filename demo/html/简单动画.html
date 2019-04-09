@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>简单动画</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div.app {
+      position: relative;
+      width: 90%;
+      margin: 100px auto;
+      background: url("../../images/background.png") top/100% 100%;
+    }
+    div.box {
+      height: 260px;
+      animation: progress 1s linear infinite;
+    }
+    @keyframes progress {
+      0% {
+        background: url("../../images/light01.png") center/97% 98% no-repeat;
+      }
+      50% {
+        background: url("../../images/light01.png") center/97% 98% no-repeat;
+      }
+      51% {
+        background: url("../../images/light02.png") center/95% 94% no-repeat;
+      }
+      100% {
+        background: url("../../images/light02.png") center/95% 94% no-repeat;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="box"></div>
+  </div>
+</body>
+</html>
