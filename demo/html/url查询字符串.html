@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>url查询字符串</title>
+</head>
+<body>
+  <script>
+    const urlParams = function (url) {
+      let uArr = new URL(url).search.split('&');
+      uArr[0] = uArr[0].replace('?', '');
+      let uObj = {};
+      for (let i = 0; i < uArr.length; i++) {
+        uObj[uArr[i].split('=')[0]] = uArr[i].slice(uArr[i].indexOf('=') + 1)
+      }
+      return uObj
+    };
+
+    console.log(urlParams('http://www.baidu.com?a=1&b=2=1='))
+  </script>
+</body>
+</html>
