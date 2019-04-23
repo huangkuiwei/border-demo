@@ -6,17 +6,19 @@
 </head>
 <body>
   <script>
-    const urlParams = function (url) {
-      let uArr = new URL(url).search.split('&');
-      uArr[0] = uArr[0].replace('?', '');
-      let uObj = {};
-      for (let i = 0; i < uArr.length; i++) {
-        uObj[uArr[i].split('=')[0]] = uArr[i].slice(uArr[i].indexOf('=') + 1)
+    const urlParams = function (url = location) {
+      if (typeof url === 'string') {
+        url = new URL(url)
       }
-      return uObj
+      let params = new URLSearchParams(url.search);
+      let paramsObject = {};
+      for (let param of params) {
+        paramsObject[param[0]] = param[1]
+      }
+      return paramsObject
     };
 
-    console.log(urlParams('http://www.baidu.com?a=1&b=2=1='))
+    console.log(urlParams('https://www.baidu.com/link?url=HErNrvSw&wd=&eqid=5cbe'))
   </script>
 </body>
 </html>
