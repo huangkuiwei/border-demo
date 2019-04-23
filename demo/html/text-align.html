@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>text-align</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app label {
+      width: 100px;
+      display: inline-block;
+      text-align: justify;
+      /* 只有一行的时候需要添加这个属性，text-align: justify;对最后一行无效 */
+      text-align-last: justify;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <label>姓名：</label>
+      <input type="text">
+    </div>
+    <div>
+      <label>电话号码：</label>
+      <input type="text">
+    </div>
+    <div>
+      <label>身份证：</label>
+      <input type="text">
+    </div>
+  </div>
+</body>
+</html>
