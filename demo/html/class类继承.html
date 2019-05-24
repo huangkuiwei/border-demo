@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>class类继承</title>
+</head>
+<body>
+  <script>
+    class People {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age
+      }
+
+      say() {
+        console.log(`我的名字是${this.name}`)
+      }
+    }
+
+    class Student extends People {
+      // 如果 constructor 里面只需要写 super(...arguments)，那么 constructor 也可以省略不写。
+      constructor() {
+        // 必选先写 super 才能使用 this，因为子类没有自己的 this，是父类继承下来的
+        // 在实例化新对象的时候，会首先自动执行 constructor 中得代码
+        super(...arguments);
+        console.log(this)
+      }
+
+      say() {
+        super.say();        // 继承父类的 say 方法，要是没有写 super.say()，则是覆盖了父类的方法
+        console.log('say hello')
+      }
+
+      eat() {
+        super.say();                // 不同名字的方法同样可以继承父类中的方法。
+        console.log('eat food')
+      }
+    }
+
+    let s = new Student('huang', 24);
+    s.eat()
+  </script>
+</body>
+</html>
