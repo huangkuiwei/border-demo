@@ -12,8 +12,14 @@
         this.age = age
       }
 
+      // 公共方法，定义在 prototype 上
       say() {
         console.log(`我的名字是${this.name}`)
+      }
+
+      // 静态方法
+      static eye() {
+        console.log('I have two eyes')
       }
     }
 
@@ -35,10 +41,19 @@
         super.say();                // 不同名字的方法同样可以继承父类中的方法。
         console.log('eat food')
       }
+
+      static eye() {        // 父类的静态方法， 可以被子类继承
+        super.eye()         // 子类得静态方法要使用分类的静态属性，同样需要 super.a()
+      }
     }
 
-    let s = new Student('huang', 24);
-    s.eat()
+    // 定义静态属性
+    Student.test = 'test';
+
+    Student.eye();          // I have two eyes
+    let s = new Student('huang', 24);     // Student {name: "huang", age: 24}
+    s.eat()     // 我的名字是huang
+                // eat food
   </script>
 </body>
 </html>
