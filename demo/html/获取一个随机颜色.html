@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取一个随机颜色</title>
+</head>
+<body>
+  <script>
+    function getRandomColor() {
+      let rbg = [];
+      for (let i = 0; i < 3; i++) {
+        let color = Math.floor((Math.random() * 256)).toString(16);
+        color = color.length === 1 ? `0${color}` : color;
+        rbg.push(color)
+      }
+      return '#' + rbg.join('')
+    }
+
+    console.log(getRandomColor())
+  </script>
+</body>
+</html>
