@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>字体滚动效果</title>
+  <script src="../../js/Vue-2.5.17.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      position: relative;
+      overflow: hidden;
+      height: 20px;
+    }
+    #app > div {
+      position: absolute;
+      display: flex;
+      left: 414px;
+    }
+    #app > div > p {
+      white-space: nowrap;
+      margin-right: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div ref="hello">
+      <p v-for="item of list">{{item}}</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        list: [
+          '恭喜XXX获得玛莎拉蒂代金券一张',
+          '恭喜XXX获得iphone保护壳一个',
+          '恭喜XXX获得现金0.01元',
+          '恭喜XXX获得保时捷5元优惠券'
+        ],
+        screen: window.screen.width,
+        left: 0,
+        totalWidth: 0
+      },
+      mounted() {
+        this.$nextTick().then(() => {
+          this.totalWidth = window.getComputedStyle(this.$refs.hello).width;
+          setInterval(() => {
+            if (parseInt(this.totalWidth) <= Math.abs(this.left)) {
+              this.$refs.hello.style.transition = 'none';
+              this.$refs.hello.style.left = this.screen + 'px';
+              this.left = parseInt(this.$refs.hello.style.left || this.screen)
+            } else {
+              this.$refs.hello.style.transition = 'all .1s linear';
+              this.left = parseInt(this.$refs.hello.style.left || this.screen);
+              this.$refs.hello.style.left = this.left - 10 + 'px'
+            }
+          }, 100)
+        })
+      },
+      computed: {
+        total() {
+          let total = '';
+          this.list.forEach(item => {
+            total += item
+          });
+          return total
+        }
+      }
+    })
+  </script>
+</body>
+</html>
