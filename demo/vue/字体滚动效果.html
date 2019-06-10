@@ -18,7 +18,6 @@
     #app > div {
       position: absolute;
       display: flex;
-      left: 414px;
     }
     #app > div > p {
       white-space: nowrap;
@@ -27,8 +26,8 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <div ref="hello">
+  <div id="app" ref="app">
+    <div ref="box" :style="boxStyle">
       <p v-for="item of list">{{item}}</p>
     </div>
   </div>
@@ -43,22 +42,25 @@
           '恭喜XXX获得现金0.01元',
           '恭喜XXX获得保时捷5元优惠券'
         ],
-        screen: window.screen.width,
-        left: 0,
-        totalWidth: 0
+        boxStyle: {}
       },
       mounted() {
         this.$nextTick().then(() => {
-          this.totalWidth = window.getComputedStyle(this.$refs.hello).width;
+          this.boxWidth = this.$refs.box.clientWidth;      // 元素 .box 的宽度
+          this.appWidth = this.$refs.app.clientWidth;      // 元素 .app 的宽度
+          // 让 .box 元素从 .app 的最左侧开始滚动
+          this.boxStyle = {
+            left: this.appWidth + 'px'
+          };
           setInterval(() => {
-            if (parseInt(this.totalWidth) <= Math.abs(this.left)) {
-              this.$refs.hello.style.transition = 'none';
-              this.$refs.hello.style.left = this.screen + 'px';
-              this.left = parseInt(this.$refs.hello.style.left || this.screen)
+            if (Math.abs(this.left) >= this.boxWidth) {             // 滚动完了
+              this.$refs.box.style.transition = 'none';             // 复原前取消动画
+              this.$refs.box.style.left = this.appWidth + 'px';     // 复原
+              this.left = parseInt(this.$refs.box.style.left || this.appWidth)   // 更新 this.left
             } else {
-              this.$refs.hello.style.transition = 'all .1s linear';
-              this.left = parseInt(this.$refs.hello.style.left || this.screen);
-              this.$refs.hello.style.left = this.left - 10 + 'px'
+              this.$refs.box.style.transition = 'all .1s linear';       // 启动滚动过程中的动画
+              this.left = parseInt(this.$refs.box.style.left || this.appWidth);   // 更新 this.left
+              this.$refs.box.style.left = this.left - 10 + 'px'         // .box 的 left 慢慢减小
             }
           }, 100)
         })
