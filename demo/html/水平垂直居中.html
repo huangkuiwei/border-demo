@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>水平垂直居中</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      height: 500px;
+      width: 500px;
+      background: darkkhaki;
+    }
+    #app > div {
+      background: cornflowerblue;
+    }
+    /* No.1 */
+    /*#app {*/
+    /*height: 500px;*/
+    /*width: 500px;*/
+    /*background: darkkhaki;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*}*/
+
+    /* No.2 */
+    /*#app {*/
+    /*position: relative;*/
+    /*}*/
+    /*#app > div {*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*}*/
+
+    /*No.3*/
+    /*#app {*/
+    /*position: relative;*/
+    /*}*/
+    /*#app > div {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*width: 50%;*/
+    /*height: 50%;*/
+    /*margin: auto;*/
+    /*}*/
+
+    /* No.4 */
+    /*#app {*/
+    /*display: table;*/
+    /*}*/
+    /*#app > div {*/
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    /*text-align: center;*/
+    /*}*/
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+      <div>hello world hello world</div>
+    </div>
+  </div>
+</body>
+</html>
