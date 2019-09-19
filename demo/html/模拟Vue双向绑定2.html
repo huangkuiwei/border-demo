@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>模拟Vue双向绑定2</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="message">
+    <p v-text="message"></p>
+    <button v-on:click="greet">按钮</button>
+  </div>
+
+  <script>
+    class Vue {
+      constructor(obj) {
+        this.$el = document.body.querySelector('#app');
+        this.$data = obj.data;
+        this.$methods = obj.methods;
+        this.binding = {};
+        this.observer();
+        this.compile(this.$el);
+      }
+
+      observer() {
+        let keys = Object.keys(this.$data);
+        keys.forEach(key => {
+          let value = this.$data[key];
+          let binding = this.binding[key] = [];
+          Object.defineProperty(this.$data, key, {
+            enumerable: true,
+            configurable: true,
+            get() {
+              return value
+            },
+            set(newValue) {
+              if (newValue === value) {
+                return
+              }
+              value = newValue;
+              binding.forEach(item => {
+                let {node, attr, value} = item;
+                node[attr] = this[value]
+              })
+            }
+          })
+        })
+      }
+
+      compile(el) {
+        let nodes = el.children;
+        for (let i = 0; i < nodes.length; i++) {
+          let node = nodes[i];
+          if (node.children.length) {
+            this.compile(node)
+          }
+          // v-on:click
+          if (node.hasAttribute('v-on:click')) {
+            let callback = node.getAttribute('v-on:click');
+            node.addEventListener('click', this.$methods[callback].bind(this.$data))
+          }
+          // v-model
+          if (node.hasAttribute('v-model')) {
+            let value = node.getAttribute('v-model');
+            node.value = this.$data[value];
+            this.binding[value].push(this.watcher(node, 'value', value));
+            node.addEventListener('input', (e) => {
+              this.$data[value] = e.target.value
+            })
+          }
+          // v-text
+          if (node.hasAttribute('v-text')) {
+            let value = node.getAttribute('v-text');
+            this.binding[value].push(this.watcher(node, 'innerText', value));
+            node.innerText = this.$data[value];
+          }
+        }
+      }
+
+      watcher(node, attr, value) {
+        return {
+          node,
+          attr,
+          value
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world'
+      },
+      methods: {
+        greet() {
+          this.message = 123
+        }
+      }
+    })
+  </script>
+</body>
+</html>
