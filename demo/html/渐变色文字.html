@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>渐变色文字</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .app {
+      font-size: 2rem;
+      width: 200px;
+      background-image: linear-gradient(to bottom right, red, #fd8403, yellow);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    hello world
+  </div>
+</body>
+</html>
