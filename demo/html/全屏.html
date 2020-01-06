@@ -12,18 +12,18 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    123
-  </div>
-  <button>点击全屏</button>
+<div id="app">
+  123
+</div>
+<button>点击全屏</button>
 
-  <script>
-    let app = document.getElementById('app');
-    let btn = document.getElementsByTagName('button')[0];
-    btn.onclick = function () {
-      let rfs = app.requestFullScreen || app.webkitRequestFullScreen || app.mozRequestFullScreen || app.msRequestFullScreen;
-      rfs.call(app)
-    }
-  </script>
+<script>
+  let app = document.getElementById('app')
+  let btn = document.getElementsByTagName('button')[0]
+  btn.onclick = function () {
+    let rfs = app.requestFullScreen || app.webkitRequestFullScreen || app.mozRequestFullScreen || app.msRequestFullScreen
+    rfs.call(app)
+  }
+</script>
 </body>
 </html>

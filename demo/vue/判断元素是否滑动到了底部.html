@@ -30,43 +30,43 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <!-- 给某一个元素添加滚动事件 -->
-    <div class="contain" @scroll="tip">
-      <p>hello</p>
-      <p>hello</p>
-      <p>hello</p>
-      <p>hello</p>
-      <p>hello</p>
-      <p>hello</p>
-    </div>
+<div id="app">
+  <!-- 给某一个元素添加滚动事件 -->
+  <div class="contain" @scroll="tip">
+    <p>hello</p>
+    <p>hello</p>
+    <p>hello</p>
+    <p>hello</p>
+    <p>hello</p>
+    <p>hello</p>
   </div>
+</div>
 
-  <script>
-    new Vue({
-      mounted() {
-        // 给body添加滚动事件
-        document.body.onscroll = function () {
-          alert('Hello')
-        }
-        // 无效
-        // document.documentElement.onscroll = function () {
-        //   alert('Hello')
-        // }
-        // 无效，不知道为啥
-        // document.body.addEventListener('scroll', () => {
-        //   alert('hello')
-        // })
-      },
-      methods: {
-        tip() {
-          let contain = document.getElementsByClassName('contain')[0];
-          if (contain.scrollTop + contain.clientHeight >= contain.scrollHeight) {
-            alert('到底啊')
-          }
+<script>
+  new Vue({
+    mounted () {
+      // 给body添加滚动事件
+      document.body.onscroll = function () {
+        alert('Hello')
+      }
+      // 无效
+      // document.documentElement.onscroll = function () {
+      //   alert('Hello')
+      // }
+      // 无效，不知道为啥
+      // document.body.addEventListener('scroll', () => {
+      //   alert('hello')
+      // })
+    },
+    methods: {
+      tip () {
+        let contain = document.getElementsByClassName('contain')[0]
+        if (contain.scrollTop + contain.clientHeight >= contain.scrollHeight) {
+          alert('到底啊')
         }
       }
-    }).$mount('#app')
-  </script>
+    }
+  }).$mount('#app')
+</script>
 </body>
 </html>

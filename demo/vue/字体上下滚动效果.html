@@ -25,50 +25,50 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <div :style="listStyle">
-      <p v-for="item in list">{{item}}</p>
-      <p ref="target">{{list[0]}}</p>
-    </div>
+<div id="app">
+  <div :style="listStyle">
+    <p v-for="item in list">{{item}}</p>
+    <p ref="target">{{list[0]}}</p>
   </div>
+</div>
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        list: [
-          '恭喜186****2513免费换取100元现金券',
-          '恭喜186****2513免费换取50元油卡',
-          '恭喜157****8721免费换取50元油卡',
-          '恭喜139****3886免费换取100元现金券',
-          '恭喜185****3862免费换取50元油卡',
-          '恭喜185****3862免费换取星巴克中杯免饮券'
-        ],
-        height: 0,
-        offset: 0
-      },
-      mounted() {
-        if (this.list.length) {
-          this.height = this.$refs.target.clientHeight;
-          setInterval(() => {
-            this.offset += this.height;
-            if (this.offset >= this.height * this.list.length) {
-              setTimeout(() => {
-                this.offset = 0
-              }, 500)
-            }
-          }, 2000)
-        }
-      },
-      computed: {
-        listStyle() {
-          return {
-            transform: `translateY(-${this.offset}px)`,
-            transition: this.offset ? '.5s' : 'none'
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      list: [
+        '恭喜186****2513免费换取100元现金券',
+        '恭喜186****2513免费换取50元油卡',
+        '恭喜157****8721免费换取50元油卡',
+        '恭喜139****3886免费换取100元现金券',
+        '恭喜185****3862免费换取50元油卡',
+        '恭喜185****3862免费换取星巴克中杯免饮券'
+      ],
+      height: 0,
+      offset: 0
+    },
+    mounted () {
+      if (this.list.length) {
+        this.height = this.$refs.target.clientHeight
+        setInterval(() => {
+          this.offset += this.height
+          if (this.offset >= this.height * this.list.length) {
+            setTimeout(() => {
+              this.offset = 0
+            }, 500)
           }
+        }, 2000)
+      }
+    },
+    computed: {
+      listStyle () {
+        return {
+          transform: `translateY(-${this.offset}px)`,
+          transition: this.offset ? '.5s' : 'none'
         }
       }
-    })
-  </script>
+    }
+  })
+</script>
 </body>
 </html>

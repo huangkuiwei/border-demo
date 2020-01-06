@@ -13,7 +13,7 @@
       height: 150px;
       width: 150px;
       margin: 100px auto;
-      border: 2px dashed #ccc;
+      border: 2px dashed #cccccc;
       border-radius: 10px;
       display: flex;
       justify-content: center;
@@ -23,50 +23,50 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <img-upload accept="image/*" :max-size="100" @upload-success="imageList.push($event)">
-      <p class="upload">+</p>
-    </img-upload>
-    {{imageList}}
-  </div>
+<div id="app">
+  <img-upload accept="image/*" :max-size="100" @upload-success="imageList.push($event)">
+    <p class="upload">+</p>
+  </img-upload>
+  {{imageList}}
+</div>
 
-  <script>
-    Vue.component('img-upload', {
-      template: '<div><slot></slot></div>',
-      props: {
-        accept: [String],
-        maxSize: [Number],
-        max: [Number]
+<script>
+  Vue.component('img-upload', {
+    template: '<div><slot></slot></div>',
+    props: {
+      accept: [String],
+      maxSize: [Number],
+      max: [Number]
+    },
+    mounted () {
+      this.$el.onclick = this.pick
+      this.$input = document.createElement('input')
+      this.$input.type = 'file'
+      this.$input.accept = this.accept
+      this.$input.onchange = this.upload
+    },
+    methods: {
+      pick () {
+        this.$input.value = ''
+        //模拟用户点击
+        this.$input.click()
       },
-      mounted() {
-        this.$el.onclick = this.pick;
-        this.$input = document.createElement('input');
-        this.$input.type = 'file';
-        this.$input.accept = this.accept;
-        this.$input.onchange = this.upload
-      },
-      methods: {
-        pick() {
-          this.$input.value = '';
-          //模拟用户点击
-          this.$input.click()
-        },
-        upload(e) {
-          if (this.maxSize && this.maxSize < e.target.files[0].size / 1024) {
-            console.log('文件过大');
-            return
-          }
-          this.$emit('upload-success', e.target.files[0].name)
+      upload (e) {
+        if (this.maxSize && this.maxSize < e.target.files[0].size / 1024) {
+          console.log('文件过大')
+          return
         }
+        this.$emit('upload-success', e.target.files[0].name)
       }
-    });
+    }
+  })
 
-    new Vue({
-      el: '#app',
-      data: {
-        imageList: []
-      }
-    })
-  </script>
+  new Vue({
+    el: '#app',
+    data: {
+      imageList: []
+    }
+  })
+</script>
 </body>
 </html>

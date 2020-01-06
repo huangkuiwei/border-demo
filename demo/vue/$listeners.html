@@ -6,35 +6,35 @@
   <script src="../../js/Vue-2.5.17.js"></script>
 </head>
 <body>
-  <div id="app">
-    <!-- 添加.native修饰符 $listeners 为空对象 -->
-    <com-a @click="greet" @focus="greet"></com-a>
+<div id="app">
+  <!-- 添加.native修饰符 $listeners 为空对象 -->
+  <com-a @click="greet" @focus="greet"></com-a>
+</div>
+<template id="com-a">
+  <div>
+    <p>这是一段文字</p>
+    <!-- 相当于在button元素上绑定了一个click事件 -->
+    <!-- <button @click="$listeners.click">hello</button> -->
+    <!-- 相当于在button元素上绑定了click和focus两个事件 -->
+    <button v-on="$listeners">hello</button>
   </div>
-  <template id="com-a">
-    <div>
-      <p>这是一段文字</p>
-      <!-- 相当于在button元素上绑定了一个click事件 -->
-      <!-- <button @click="$listeners.click">hello</button> -->
-      <!-- 相当于在button元素上绑定了click和focus两个事件 -->
-      <button v-on="$listeners">hello</button>
-    </div>
-  </template>
-  <script>
-    Vue.component('com-a', {
-      template: '#com-a',
-      created() {
-        console.log(this.$listeners)
-      }
-    });
+</template>
+<script>
+  Vue.component('com-a', {
+    template: '#com-a',
+    created () {
+      console.log(this.$listeners)
+    }
+  })
 
-    new Vue({
-      el: '#app',
-      methods: {
-        greet() {
-          console.log('Hello World')
-        }
+  new Vue({
+    el: '#app',
+    methods: {
+      greet () {
+        console.log('Hello World')
       }
-    })
-  </script>
+    }
+  })
+</script>
 </body>
 </html>

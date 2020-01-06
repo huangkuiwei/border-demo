@@ -5,27 +5,27 @@
   <title>call apply</title>
 </head>
 <body>
-  <script>
-    function SuperClass() {
-      this.a = 1;
-      this.print = function () {
-        console.log(this.a);
-      }
+<script>
+  function SuperClass () {
+    this.a = 1
+    this.print = function () {
+      console.log(this.a)
     }
+  }
 
-    function SubClass() {
-      SuperClass.call(this);     //实现继承
-      /*
-      等价于
-      this.a = 1;
-      this.print = function () {
-        console.log(this.a);
-      }
-       */
+  function SubClass () {
+    SuperClass.call(this)     //实现继承
+    /*
+    等价于
+    this.a = 1;
+    this.print = function () {
+      console.log(this.a);
     }
+     */
+  }
 
-    let o2 = new SubClass();
-    o2.print()    // 1
-  </script>
+  let o2 = new SubClass()
+  o2.print()    // 1
+</script>
 </body>
 </html>

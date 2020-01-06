@@ -34,38 +34,38 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <img v-for="(item, index) in redPackList"
-         @animationend="hiddenRedPack(index)"
-         v-if="item.show"
-         :style="{animation: 'down linear ' + item.time, left: item.left}"
-         :src="item.url"
-         :key="index"
-    >
-  </div>
+<div id="app">
+  <img v-for="(item, index) in redPackList"
+       @animationend="hiddenRedPack(index)"
+       v-if="item.show"
+       :style="{animation: 'down linear ' + item.time, left: item.left}"
+       :src="item.url"
+       :key="index"
+  >
+</div>
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        redPackList: []
-      },
-      created() {
-        setInterval(() => {
-          this.redPackList.push({
-            url: 'http://pic.51yuansu.com/pic3/cover/03/08/08/5b3d5670ee9ac_610.jpg',
-            time: Math.random() * (6 - 1) + 1 + 's',
-            left: Math.random() * (screen.width - 100) + 'px',
-            show: true
-          })
-        }, 300)
-      },
-      methods: {
-        hiddenRedPack(index) {
-          this.$set(this.redPackList[index], 'show', false)
-        }
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      redPackList: []
+    },
+    created () {
+      setInterval(() => {
+        this.redPackList.push({
+          url: 'http://pic.51yuansu.com/pic3/cover/03/08/08/5b3d5670ee9ac_610.jpg',
+          time: Math.random() * (6 - 1) + 1 + 's',
+          left: Math.random() * (screen.width - 100) + 'px',
+          show: true
+        })
+      }, 300)
+    },
+    methods: {
+      hiddenRedPack (index) {
+        this.$set(this.redPackList[index], 'show', false)
       }
-    })
-  </script>
+    }
+  })
+</script>
 </body>
 </html>

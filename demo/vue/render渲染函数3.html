@@ -6,41 +6,41 @@
   <script src="../../js/Vue-2.5.17.js"></script>
 </head>
 <body>
-  <div id="app">
-    <com-a name="hello world" :grade="1">
-      Hello World
-    </com-a>
-  </div>
+<div id="app">
+  <com-a name="hello world" :grade="1">
+    Hello World
+  </com-a>
+</div>
 
-  <script>
-    Vue.component('com-a', {
-      render(h) {
-        return h(
-          'h' + this.grade,
-          [
-            h(
-              'a',
-              {
-                attrs: {
-                  name: this.name,
-                  href: '#' + this.name
-                }
-              },
-              [this.$slots.default]
-            )
-          ]
-        )
-      },
-      props: {
-        grade: Number,
-        name: String
-      }
-    });
+<script>
+  Vue.component('com-a', {
+    render (h) {
+      return h(
+        'h' + this.grade,
+        [
+          h(
+            'a',
+            {
+              attrs: {
+                name: this.name,
+                href: '#' + this.name
+              }
+            },
+            [this.$slots.default]
+          )
+        ]
+      )
+    },
+    props: {
+      grade: Number,
+      name: String
+    }
+  })
 
-    new Vue({
-      el: '#app',
+  new Vue({
+    el: '#app'
 
-    })
-  </script>
+  })
+</script>
 </body>
 </html>

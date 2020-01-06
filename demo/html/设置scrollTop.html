@@ -17,32 +17,32 @@
   </style>
 </head>
 <body>
-  <div>
-    <p id="content">
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-      <span>这是一段文字这是一段文字这是一段文字</span>
-    </p>
-  </div>
-  <script>
-    let content = document.getElementById('content');
-    content.scrollTop = 100;
-    // Chrome/FirFox W3C标准浏览器(有DOCTYPE声明，无DOCTYPE声明的时候用document.body.scrollTop)
-    // Chrome要延迟执行，我也不知道为啥
-    setTimeout(() => {
-      document.documentElement.scrollTop = 200
-    }, 200);
+<div>
+  <p id="content">
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+    <span>这是一段文字这是一段文字这是一段文字</span>
+  </p>
+</div>
+<script>
+  let content = document.getElementById('content')
+  content.scrollTop = 100
+  // Chrome/FirFox W3C标准浏览器(有DOCTYPE声明，无DOCTYPE声明的时候用document.body.scrollTop)
+  // Chrome要延迟执行，我也不知道为啥
+  setTimeout(() => {
+    document.documentElement.scrollTop = 200
+  }, 200)
 
-    // IE/Edge
-    document.body.scrollTop = 200
-  </script>
+  // IE/Edge
+  document.body.scrollTop = 200
+</script>
 </body>
 </html>

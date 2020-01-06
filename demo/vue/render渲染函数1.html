@@ -6,33 +6,33 @@
   <script src="../../js/Vue-2.5.17.js"></script>
 </head>
 <body>
-  <div id="app">
-    <com-a>
-      <p>默认slot</p>
-      <h1 slot="title">title slot</h1>
-    </com-a>
-  </div>
+<div id="app">
+  <com-a>
+    <p>默认slot</p>
+    <h1 slot="title">title slot</h1>
+  </com-a>
+</div>
 
-  <script>
-    Vue.component('com-a', {
-      render(h) {
-        // <slot/>
-        return h('div', {
-          class: ['com-a', 'test'],
-          style: {
-            'font-size': '20px'
-          }
-        }, [this.$slots.default, this.$slots.title])
-      },
-      mounted() {
-        // 该组件的根节点
-        console.log(this.$el)
-      }
-    });
+<script>
+  Vue.component('com-a', {
+    render (h) {
+      // <slot/>
+      return h('div', {
+        class: ['com-a', 'test'],
+        style: {
+          'font-size': '20px'
+        }
+      }, [this.$slots.default, this.$slots.title])
+    },
+    mounted () {
+      // 该组件的根节点
+      console.log(this.$el)
+    }
+  })
 
-    new Vue({
-      el: '#app'
-    })
-  </script>
+  new Vue({
+    el: '#app'
+  })
+</script>
 </body>
 </html>

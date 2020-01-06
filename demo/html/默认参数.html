@@ -5,15 +5,15 @@
   <title>默认参数</title>
 </head>
 <body>
-  <script>
-    //设置默认参数 a = 1, b = 1, c =1
-    function fn(a = 1, b = 1, c = 1) {
-      console.log(a + b + c);
-      //arguments对象的长度是由传入的参数个数决定，不由定义函数的参数的个数决定。
-      console.log(arguments.length)      //0
-    }
+<script>
+  //设置默认参数 a = 1, b = 1, c =1
+  function fn (a = 1, b = 1, c = 1) {
+    console.log(a + b + c)
+    //arguments对象的长度是由传入的参数个数决定，不由定义函数的参数的个数决定。
+    console.log(arguments.length)      //0
+  }
 
-    fn()      //3
-  </script>
+  fn()      //3
+</script>
 </body>
 </html>

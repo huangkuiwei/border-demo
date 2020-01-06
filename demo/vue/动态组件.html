@@ -52,50 +52,50 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <div class="menu">
-      <span :class="{active: com === 'com-a'}" @click="com='com-a'">菜单1</span>
-      <span :class="{active: com === 'com-b'}" @click="com='com-b'">菜单2</span>
+<div id="app">
+  <div class="menu">
+    <span :class="{active: com === 'com-a'}" @click="com='com-a'">菜单1</span>
+    <span :class="{active: com === 'com-b'}" @click="com='com-b'">菜单2</span>
+  </div>
+  <div class="content">
+    <!-- is 可以动态绑定其它组件的组件名 -->
+    <component :is="com"></component>
+  </div>
+</div>
+<template id="com-a" type="x/template">
+  <div class="com-a">
+    <div class="com-a-menu">
+      <span :class="{active: menu === 1}" @click="menu=1">菜单一</span>
+      <span :class="{active: menu === 2}" @click="menu=2">菜单二</span>
+      <span :class="{active: menu === 3}" @click="menu=3">菜单三</span>
     </div>
-    <div class="content">
-      <!-- is 可以动态绑定其它组件的组件名 -->
-      <component :is="com"></component>
+    <div class="com-a-content">
+      <p v-if="menu === 1">菜单1内容</p>
+      <p v-if="menu === 2">菜单2内容</p>
+      <p v-if="menu === 3">菜单3内容</p>
     </div>
   </div>
-  <template id="com-a" type="x/template">
-    <div class="com-a">
-      <div class="com-a-menu">
-        <span :class="{active: menu === 1}" @click="menu=1">菜单一</span>
-        <span :class="{active: menu === 2}" @click="menu=2">菜单二</span>
-        <span :class="{active: menu === 3}" @click="menu=3">菜单三</span>
-      </div>
-      <div class="com-a-content">
-        <p v-if="menu === 1">菜单1内容</p>
-        <p v-if="menu === 2">菜单2内容</p>
-        <p v-if="menu === 3">菜单3内容</p>
-      </div>
-    </div>
-  </template>
+</template>
 
-  <script>
-    Vue.component('com-a', {
-      template: `#com-a`,
-      data() {
-        return {
-          menu: 1
-        }
+<script>
+  Vue.component('com-a', {
+    template: `#com-a`,
+    data () {
+      return {
+        menu: 1
       }
-    });
-    Vue.component('com-b', {
-      template: `<div>World</div>`
-    });
+    }
+  })
+  Vue.component('com-b', {
+    template: `<div>World</div>`
+  })
 
-    new Vue({
-      el: '#app',
-      data: {
-        com: 'com-a'
-      }
-    })
-  </script>
+  new Vue({
+    el: '#app',
+    data: {
+      com: 'com-a'
+    }
+  })
+</script>
 </body>
 </html>

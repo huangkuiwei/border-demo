@@ -6,28 +6,28 @@
   <script src="../../js/Vue-2.5.17.js"></script>
 </head>
 <body>
-  <div id="app">
-    <!-- prop 向子组件传递函数对象 -->
-    <demo-com :greet="show"/>
-  </div>
+<div id="app">
+  <!-- prop 向子组件传递函数对象 -->
+  <demo-com :greet="show"/>
+</div>
 
-  <script>
-    Vue.component('demo-com', {
-      props: ['greet'],
-      template: '<div><button @click="greet()">按钮</button></div>'
-    });
+<script>
+  Vue.component('demo-com', {
+    props: ['greet'],
+    template: '<div><button @click="greet()">按钮</button></div>'
+  })
 
-    new Vue({
-      el: '#app',
-      data: {
-        msg: 'Hello World'
-      },
-      methods: {
-        show() {
-          console.log(this.msg)
-        }
+  new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello World'
+    },
+    methods: {
+      show () {
+        console.log(this.msg)
       }
-    })
-  </script>
+    }
+  })
+</script>
 </body>
 </html>

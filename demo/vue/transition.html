@@ -32,25 +32,25 @@
   </style>
 </head>
 <body>
-  <div id="app">
-    <button @click="show = !show">隐藏/显示</button>
-    <transition appear mode="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fade0utDown">
-      <com-a v-if="show"></com-a>
-      <div v-else style="text-align: center">hello world</div>
-    </transition>
-  </div>
+<div id="app">
+  <button @click="show = !show">隐藏/显示</button>
+  <transition appear mode="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fade0utDown">
+    <com-a v-if="show"></com-a>
+    <div v-else style="text-align: center">hello world</div>
+  </transition>
+</div>
 
-  <script>
-    Vue.component('com-a', {
-      template: '<div style="text-align: center"><h1>文章标题</h1><p>这是一段文字</p></div>'
-    });
+<script>
+  Vue.component('com-a', {
+    template: '<div style="text-align: center"><h1>文章标题</h1><p>这是一段文字</p></div>'
+  })
 
-    new Vue({
-      el: '#app',
-      data: {
-        show: true
-      }
-    })
-  </script>
+  new Vue({
+    el: '#app',
+    data: {
+      show: true
+    }
+  })
+</script>
 </body>
 </html>
