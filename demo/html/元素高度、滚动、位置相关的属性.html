@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>元素高度、滚动、位置相关的属性</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    .app {
-      height: 200px;
-      width: 200px;
-      background: #cccccc;
-      font-size: 3rem;
-      overflow: scroll;
-      padding: 20px;
-      border: 20px solid #ffff00;
-      margin: 100px auto;
-    }
-  </style>
-</head>
-<body>
-<div class="app">
-  <p>这是一段文字</p>
-  <p>hello</p>
-  <p>hello</p>
-  <p>hello</p>
-  <p>hello</p>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>元素高度、滚动、位置相关的属性</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .app {
+        height: 200px;
+        width: 200px;
+        background: #cccccc;
+        font-size: 3rem;
+        overflow: scroll;
+        padding: 20px;
+        border: 20px solid #ffff00;
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <p>这是一段文字</p>
+      <p>hello</p>
+      <p>hello</p>
+      <p>hello</p>
+      <p>hello</p>
+    </div>
 
-<script>
-  let app = document.getElementsByClassName('app')[0]
-  // 这些属性都没有包括margin
-  console.log(app.clientHeight) //240px  height+上下padding 200px+20px+20px 可见高度，只可读
-  console.log(app.scrollTop)    //滚动条隐藏的部分，可读可写    app.scrollTop=100
-  console.log(app.scrollHeight) //360px 包括元素可见和不可见的部分，若是没有滚动条scrollHeight=clientHeight，只可读
-  console.log(app.offsetTop)    //100px 相对于用了定位的祖先元素的距离，否则就相对于body，只可读
-  console.log(app.offsetHeight)  //280px 200px+20px+20px+20px+20px height+上下padding+上下border，只可读
-</script>
-</body>
+    <script>
+    let app = document.getElementsByClassName('app')[0]
+    // 这些属性都没有包括margin
+    console.log(app.clientHeight) //240px  height+上下padding 200px+20px+20px 可见高度，只可读
+    console.log(app.scrollTop)    //滚动条隐藏的部分，可读可写    app.scrollTop=100
+    console.log(app.scrollHeight) //360px 包括元素可见和不可见的部分，若是没有滚动条scrollHeight=clientHeight，只可读
+    console.log(app.offsetTop)    //100px 相对于用了定位的祖先元素的距离，否则就相对于body，只可读
+    console.log(app.offsetHeight)  //280px 200px+20px+20px+20px+20px height+上下padding+上下border，只可读
+    </script>
+  </body>
 </html>

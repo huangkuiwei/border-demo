@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>实现一个sleep函数-Promise</title>
-</head>
-<body>
-<script>
-  function sleep (time) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve()
-      }, time)
-    })
-  }
+  <head>
+    <meta charset="UTF-8">
+    <title>实现一个sleep函数-Promise</title>
+  </head>
+  <body>
+    <script>
+    function sleep (time) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, time)
+      })
+    }
 
-  sleep(3000).then(() => {
-    console.log('hello world')
-  })
-</script>
-</body>
+    sleep(3000).then(() => {
+      console.log('hello world')
+    })
+    </script>
+  </body>
 </html>

@@ -1,53 +1,53 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>轮播图</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    .app {
-      width: 600px;
-      height: 400px;
-      margin: 100px auto;
-      overflow: hidden;
-      position: relative;
-    }
-    .app > .imgs {
-      position: absolute;
-      left: 0;
-      display: flex;
-      align-items: center;
-      transition: all .8s linear
-    }
-    .app > .imgs > img {
-    }
-  </style>
-</head>
-<body>
-<div class="app">
-  <div class="imgs">
-    <img src="../../images/1.jpg">
-    <img src="../../images/2.jpg">
-    <img src="../../images/1.jpg">
-    <img src="../../images/2.jpg">
-  </div>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .app {
+        width: 600px;
+        height: 400px;
+        margin: 100px auto;
+        overflow: hidden;
+        position: relative;
+      }
+      .app > .imgs {
+        position: absolute;
+        left: 0;
+        display: flex;
+        align-items: center;
+        transition: all .8s linear
+      }
+      .app > .imgs > img {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="imgs">
+        <img src="../../images/1.jpg">
+        <img src="../../images/2.jpg">
+        <img src="../../images/1.jpg">
+        <img src="../../images/2.jpg">
+      </div>
+    </div>
 
-<script>
-  let imgs = document.body.querySelector('.imgs')
-  let img = document.body.querySelectorAll('img')
-  setInterval(() => {
-    if (parseInt(imgs.style.left || 0) <= -600 * (img.length - 1)) {
-      imgs.style.left = 0
-    } else {
-      imgs.style.left = (parseInt(imgs.style.left || 0)) - 600 + 'px'
-    }
-  }, 3000)
-</script>
-</body>
+    <script>
+    let imgs = document.body.querySelector('.imgs')
+    let img = document.body.querySelectorAll('img')
+    setInterval(() => {
+      if (parseInt(imgs.style.left || 0) <= -600 * (img.length - 1)) {
+        imgs.style.left = 0
+      } else {
+        imgs.style.left = (parseInt(imgs.style.left || 0)) - 600 + 'px'
+      }
+    }, 3000)
+    </script>
+  </body>
 </html>

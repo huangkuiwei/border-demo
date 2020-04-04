@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>字体上下滚动效果</title>
-  <script src="../../js/Vue-2.5.17.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    #app {
-      height: 30px;
-      line-height: 30px;
-      color: royalblue;
-      border-radius: 20px;
-      width: 400px;
-      margin: 100px auto;
-      background: #ff000080;
-      overflow: hidden;
-    }
-    p {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-<div id="app">
-  <div :style="listStyle">
-    <p v-for="item in list">{{item}}</p>
-    <p ref="target">{{list[0]}}</p>
-  </div>
-</div>
-
-<script>
-  new Vue({
-    el: '#app',
-    data: {
-      list: [
-        '恭喜186****2513免费换取100元现金券',
-        '恭喜186****2513免费换取50元油卡',
-        '恭喜157****8721免费换取50元油卡',
-        '恭喜139****3886免费换取100元现金券',
-        '恭喜185****3862免费换取50元油卡',
-        '恭喜185****3862免费换取星巴克中杯免饮券'
-      ],
-      height: 0,
-      offset: 0
-    },
-    mounted () {
-      if (this.list.length) {
-        this.height = this.$refs.target.clientHeight
-        setInterval(() => {
-          this.offset += this.height
-          if (this.offset >= this.height * this.list.length) {
-            setTimeout(() => {
-              this.offset = 0
-            }, 500)
-          }
-        }, 2000)
+  <head>
+    <meta charset="UTF-8">
+    <title>字体上下滚动效果</title>
+    <script src="../../js/Vue-2.5.17.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
       }
-    },
-    computed: {
-      listStyle () {
-        return {
-          transform: `translateY(-${this.offset}px)`,
-          transition: this.offset ? '.5s' : 'none'
+      #app {
+        height: 30px;
+        line-height: 30px;
+        color: royalblue;
+        border-radius: 20px;
+        width: 400px;
+        margin: 100px auto;
+        background: #ff000080;
+        overflow: hidden;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="listStyle">
+        <p v-for="item in list">{{item}}</p>
+        <p ref="target">{{list[0]}}</p>
+      </div>
+    </div>
+
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        list: [
+          '恭喜186****2513免费换取100元现金券',
+          '恭喜186****2513免费换取50元油卡',
+          '恭喜157****8721免费换取50元油卡',
+          '恭喜139****3886免费换取100元现金券',
+          '恭喜185****3862免费换取50元油卡',
+          '恭喜185****3862免费换取星巴克中杯免饮券'
+        ],
+        height: 0,
+        offset: 0
+      },
+      mounted () {
+        if (this.list.length) {
+          this.height = this.$refs.target.clientHeight
+          setInterval(() => {
+            this.offset += this.height
+            if (this.offset >= this.height * this.list.length) {
+              setTimeout(() => {
+                this.offset = 0
+              }, 500)
+            }
+          }, 2000)
+        }
+      },
+      computed: {
+        listStyle () {
+          return {
+            transform: `translateY(-${this.offset}px)`,
+            transition: this.offset ? '.5s' : 'none'
+          }
         }
       }
-    }
-  })
-</script>
-</body>
+    })
+    </script>
+  </body>
 </html>

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$attrs</title>
-  <script src="../../js/Vue-2.5.17.js"></script>
-</head>
-<body>
-<div id="app">
-  <com-a placeholder="请输入内容"></com-a>
-</div>
-<template id="com-a">
-  <div>
-    <p>这是一段文字</p>
-    <input type="text" :placeholder="$attrs.placeholder">
-  </div>
-</template>
-<script>
-  Vue.component('com-a', {
-    template: '#com-a',
-    // 组件的根元素不会继承
-    inheritAttrs: false,
-    created () {
-      console.log(this.$attrs)
-    }
-  })
+  <head>
+    <meta charset="UTF-8">
+    <title>$attrs</title>
+    <script src="../../js/Vue-2.5.17.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <com-a placeholder="请输入内容"></com-a>
+    </div>
+    <template id="com-a">
+      <div>
+        <p>这是一段文字</p>
+        <input type="text" :placeholder="$attrs.placeholder">
+      </div>
+    </template>
+    <script>
+    Vue.component('com-a', {
+      template: '#com-a',
+      // 组件的根元素不会继承
+      inheritAttrs: false,
+      created () {
+        console.log(this.$attrs)
+      }
+    })
 
-  new Vue({
-    el: '#app'
-  })
-</script>
-</body>
+    new Vue({
+      el: '#app'
+    })
+    </script>
+  </body>
 </html>

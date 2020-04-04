@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>demo</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-</head>
-<body>
-<div id="app">
-  <p>{{message}}</p>
-  <button @click="focus">按钮</button>
-  <com-a ref="comA" v-model="message" label="username" placeholder="enter your name" @focus="greet">
-    <template v-slot="{username}">
-      {{username}}
-    </template>
-  </com-a>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+      <button @click="focus">按钮</button>
+      <com-a ref="comA" v-model="message" label="username" placeholder="enter your name" @focus="greet">
+        <template v-slot="{username}">
+          {{username}}
+        </template>
+      </com-a>
+    </div>
 
-<script>
-  Vue.component('com-a', {
-    template: `<div><label>{{label}}：<input ref="input" type="text" :value="value" @focus="$listeners.focus" @input="message = $event.target.value" :placeholder="$attrs.placeholder"></label><slot :username="username">default</slot></div>`,
-    props: ['value', 'label'],
-    inheritAttrs: false,
-    data () {
-      return {
-        username: 'huang'
-      }
-    },
-    methods: {
-      focus () {
-        this.$refs.input.focus()
-      }
-    },
-    created () {
-      console.log(this.$attrs)
-      console.log(this.$listeners)
-      this.$root.message = 'world'
-    }
-  })
-
-  new Vue({
-    el: '#app',
-    data: {
-      message: 'hello'
-    },
-    methods: {
-      greet () {
-        console.log('hello world')
+    <script>
+    Vue.component('com-a', {
+      template: `<div><label>{{label}}：<input ref="input" type="text" :value="value" @focus="$listeners.focus" @input="message = $event.target.value" :placeholder="$attrs.placeholder"></label><slot :username="username">default</slot></div>`,
+      props: ['value', 'label'],
+      inheritAttrs: false,
+      data () {
+        return {
+          username: 'huang'
+        }
       },
-      focus () {
-        this.$refs.comA.focus()
+      methods: {
+        focus () {
+          this.$refs.input.focus()
+        }
+      },
+      created () {
+        console.log(this.$attrs)
+        console.log(this.$listeners)
+        this.$root.message = 'world'
       }
-    }
-  })
-</script>
-</body>
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        greet () {
+          console.log('hello world')
+        },
+        focus () {
+          this.$refs.comA.focus()
+        }
+      }
+    })
+    </script>
+  </body>
 </html>

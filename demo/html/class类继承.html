@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>class类继承</title>
-</head>
-<body>
-<script>
-  class People {
-    constructor (name, age) {
-      this.name = name
-      this.age = age
+  <head>
+    <meta charset="UTF-8">
+    <title>class类继承</title>
+  </head>
+  <body>
+    <script>
+    class People {
+      constructor (name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      // 公共方法，定义在 prototype 上
+      say () {
+        console.log(`我的名字是${this.name}`)
+      }
+
+      // 静态方法
+      static eye () {
+        console.log('I have two eyes')
+      }
     }
 
-    // 公共方法，定义在 prototype 上
-    say () {
-      console.log(`我的名字是${this.name}`)
+    class Student extends People {
+      // 如果 constructor 里面只需要写 super(...arguments)，那么 constructor 也可以省略不写。
+      constructor () {
+        // 必选先写 super 才能使用 this，因为子类没有自己的 this，是父类继承下来的
+        // 在实例化新对象的时候，会首先自动执行 constructor 中得代码
+        super(...arguments)
+        console.log(this)
+      }
+
+      say () {
+        super.say()        // 继承父类的 say 方法，要是没有写 super.say()，则是覆盖了父类的方法
+        console.log('say hello')
+      }
+
+      eat () {
+        super.say()                // 不同名字的方法同样可以继承父类中的方法。
+        console.log('eat food')
+      }
+
+      static eye () {        // 父类的静态方法， 可以被子类继承
+        super.eye()         // 子类得静态方法要使用分类的静态属性，同样需要 super.a()
+      }
     }
 
-    // 静态方法
-    static eye () {
-      console.log('I have two eyes')
-    }
-  }
+    // 定义静态属性
+    Student.test = 'test'
 
-  class Student extends People {
-    // 如果 constructor 里面只需要写 super(...arguments)，那么 constructor 也可以省略不写。
-    constructor () {
-      // 必选先写 super 才能使用 this，因为子类没有自己的 this，是父类继承下来的
-      // 在实例化新对象的时候，会首先自动执行 constructor 中得代码
-      super(...arguments)
-      console.log(this)
-    }
-
-    say () {
-      super.say()        // 继承父类的 say 方法，要是没有写 super.say()，则是覆盖了父类的方法
-      console.log('say hello')
-    }
-
-    eat () {
-      super.say()                // 不同名字的方法同样可以继承父类中的方法。
-      console.log('eat food')
-    }
-
-    static eye () {        // 父类的静态方法， 可以被子类继承
-      super.eye()         // 子类得静态方法要使用分类的静态属性，同样需要 super.a()
-    }
-  }
-
-  // 定义静态属性
-  Student.test = 'test'
-
-  Student.eye()          // I have two eyes
-  let s = new Student('huang', 24)     // Student {name: "huang", age: 24}
-  s.eat()     // 我的名字是huang
-              // eat food
-</script>
-</body>
+    Student.eye()          // I have two eyes
+    let s = new Student('huang', 24)     // Student {name: "huang", age: 24}
+    s.eat()     // 我的名字是huang
+                // eat food
+    </script>
+  </body>
 </html>

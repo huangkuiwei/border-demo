@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>url查询字符串</title>
-</head>
-<body>
-<script>
-  const urlParams = function (url = location) {
-    if (typeof url === 'string') {
-      url = new URL(url)
+  <head>
+    <meta charset="UTF-8">
+    <title>url查询字符串</title>
+  </head>
+  <body>
+    <script>
+    const urlParams = function (url = location) {
+      if (typeof url === 'string') {
+        url = new URL(url)
+      }
+      let params = new URLSearchParams(url.search)
+      let paramsObject = {}
+      for (let param of params) {
+        paramsObject[param[0]] = param[1]
+      }
+      return paramsObject
     }
-    let params = new URLSearchParams(url.search)
-    let paramsObject = {}
-    for (let param of params) {
-      paramsObject[param[0]] = param[1]
-    }
-    return paramsObject
-  }
 
-  console.log(urlParams('https://www.baidu.com/link?url=HErNrvSw&wd=&eqid=5cbe'))
-</script>
-</body>
+    console.log(urlParams('https://www.baidu.com/link?url=HErNrvSw&wd=&eqid=5cbe'))
+    </script>
+  </body>
 </html>

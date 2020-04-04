@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>window.getComputedStyle</title>
-  <style>
-    div {
-      height: 100px;
-      width: 100px;
-      background: #ffff00;
-    }
-  </style>
-</head>
-<body>
-<div></div>
-<script>
-  let div = document.querySelector('div')
-  // 得出当前元素最终的style
-  console.log(window.getComputedStyle(div).getPropertyValue('background-clip'))
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>window.getComputedStyle</title>
+    <style>
+      div {
+        height: 100px;
+        width: 100px;
+        background: #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+    let div = document.querySelector('div')
+    // 得出当前元素最终的style
+    console.log(window.getComputedStyle(div).getPropertyValue('background-clip'))
+    </script>
+  </body>
 </html>

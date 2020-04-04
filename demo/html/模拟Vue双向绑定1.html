@@ -1,127 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>模拟Vue双向绑定1</title>
-</head>
-<body>
-<div id="app">
-  <button v-on:click="changeValue">按钮</button>
-  <input type="text" v-model="message">
-  <p v-text="message"></p>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>模拟Vue双向绑定1</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="changeValue">按钮</button>
+      <input type="text" v-model="message">
+      <p v-text="message"></p>
+    </div>
 
-<script>
-  function Vue (options) {
-    // 获取根元素
-    this.$el = document.querySelector(options.el)
-    // 获取 data 数据
-    this.$data = options.data
-    // 获取 methods 方法
-    this.$methods = options.methods
-    // 所有数据相关的订阅者对象都存放于此。最终结构为{数据属性:[订阅者对象，订阅者对象……]}
-    this.binding = {}
-    // 调用观察者，对数据进行劫持
-    this.observer()
-    // 对元素指令进行解析，订阅者也是在此处创建的
-    this.compile(this.$el)
-  }
+    <script>
+    function Vue (options) {
+      // 获取根元素
+      this.$el = document.querySelector(options.el)
+      // 获取 data 数据
+      this.$data = options.data
+      // 获取 methods 方法
+      this.$methods = options.methods
+      // 所有数据相关的订阅者对象都存放于此。最终结构为{数据属性:[订阅者对象，订阅者对象……]}
+      this.binding = {}
+      // 调用观察者，对数据进行劫持
+      this.observer()
+      // 对元素指令进行解析，订阅者也是在此处创建的
+      this.compile(this.$el)
+    }
 
-  Vue.prototype.observer = function () {
-    // 遍历 this.$data，劫持数据变化
-    for (let key in this.$data) {
-      // 定义用于存放数据属性值的变量 value，给初始值。
-      let value = this.$data[key]
-      // 数据订阅者初始化,是一个数组。用于存放本数据相关的所有订阅者，初始为[]
-      let binding = this.binding[key] = []
-      Object.defineProperty(this.$data, key, {
-        configurable: true,
-        enumerable: true,
-        get () {
-          return value   // 读取值为 value
-        },
-        set (newValue) {
-          if (newValue === value) {
-            return  // 数据没有改变是不进行操作
+    Vue.prototype.observer = function () {
+      // 遍历 this.$data，劫持数据变化
+      for (let key in this.$data) {
+        // 定义用于存放数据属性值的变量 value，给初始值。
+        let value = this.$data[key]
+        // 数据订阅者初始化,是一个数组。用于存放本数据相关的所有订阅者，初始为[]
+        let binding = this.binding[key] = []
+        Object.defineProperty(this.$data, key, {
+          configurable: true,
+          enumerable: true,
+          get () {
+            return value   // 读取值为 value
+          },
+          set (newValue) {
+            if (newValue === value) {
+              return  // 数据没有改变是不进行操作
+            }
+            // 更新值
+            value = newValue
+            binding.forEach(watcher => {
+              // 通知与本数据相关的订阅者们进行视图更新
+              watcher.update()
+            })
           }
-          // 更新值
-          value = newValue
-          binding.forEach(watcher => {
-            // 通知与本数据相关的订阅者们进行视图更新
-            watcher.update()
-          })
+        })
+      }
+    }
+
+    Vue.prototype.compile = function (el) {
+      let nodes = el.children
+      // 遍历根元素的所有子元素
+      for (let i = 0; i < nodes.length; i++) {
+        let node = nodes[i]
+        if (node.length > 0) {
+          // node 下面还有元素就继续递归遍历
+          this.compile(node)
         }
-      })
-    }
-  }
 
-  Vue.prototype.compile = function (el) {
-    let nodes = el.children
-    // 遍历根元素的所有子元素
-    for (let i = 0; i < nodes.length; i++) {
-      let node = nodes[i]
-      if (node.length > 0) {
-        // node 下面还有元素就继续递归遍历
-        this.compile(node)
-      }
+        // 该节点是否拥有 v-on:click 指令
+        if (node.hasAttribute('v-on:click')) {
+          let attrsValue = node.getAttribute('v-on:click')
+          // 为元素绑定click事件，事件方法为$methods下的方法，并将其this指向this.$data
+          node.addEventListener('click', this.$methods[attrsValue].bind(this.$data))
+        }
 
-      // 该节点是否拥有 v-on:click 指令
-      if (node.hasAttribute('v-on:click')) {
-        let attrsValue = node.getAttribute('v-on:click')
-        // 为元素绑定click事件，事件方法为$methods下的方法，并将其this指向this.$data
-        node.addEventListener('click', this.$methods[attrsValue].bind(this.$data))
-      }
+        // 该节点是否拥有 v-model 指令
+        if (node.hasAttribute('v-model')) {
+          // 获得指令对应的数据属性
+          let attrValue = node.getAttribute('v-model')
+          // 为指令添加input事件
+          node.addEventListener('input', (() => {
+            // 为该数据添加订阅者
+            this.binding[attrValue].push(new Watcher(node, 'value', this, attrValue))
+            return () => {
+              // 更新$data的属性值，会在观察者中进行劫持
+              this.$data[attrValue] = node.value
+            }
+          })())
+        }
 
-      // 该节点是否拥有 v-model 指令
-      if (node.hasAttribute('v-model')) {
-        // 获得指令对应的数据属性
-        let attrValue = node.getAttribute('v-model')
-        // 为指令添加input事件
-        node.addEventListener('input', (() => {
+        // 该节点是否拥有v-text指令
+        if (node.hasAttribute('v-text')) {
+          // 获得指令对应的数据属性
+          let attrValue = node.getAttribute('v-text')
           // 为该数据添加订阅者
-          this.binding[attrValue].push(new Watcher(node, 'value', this, attrValue))
-          return () => {
-            // 更新$data的属性值，会在观察者中进行劫持
-            this.$data[attrValue] = node.value
-          }
-        })())
-      }
-
-      // 该节点是否拥有v-text指令
-      if (node.hasAttribute('v-text')) {
-        // 获得指令对应的数据属性
-        let attrValue = node.getAttribute('v-text')
-        // 为该数据添加订阅者
-        this.binding[attrValue].push(new Watcher(node, 'innerText', this, attrValue))
+          this.binding[attrValue].push(new Watcher(node, 'innerText', this, attrValue))
+        }
       }
     }
-  }
 
-  // 观察者
-  function Watcher (el, attr, vm, val) {
-    this.el = el           // 指令所在的元素
-    this.attr = attr       // 绑定的属性名
-    this.vm = vm           // 指令所在实例
-    this.val = val         // 指令的值
-    this.update()           // 更新视图view
-  }
-
-  // 更新属性值对应的数据
-  Watcher.prototype.update = function () {
-    this.el[this.attr] = this.vm.$data[this.val]
-  }
-
-  new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello World'
-    },
-    methods: {
-      changeValue () {
-        this.message = 'Value is changed'
-      }
+    // 观察者
+    function Watcher (el, attr, vm, val) {
+      this.el = el           // 指令所在的元素
+      this.attr = attr       // 绑定的属性名
+      this.vm = vm           // 指令所在实例
+      this.val = val         // 指令的值
+      this.update()           // 更新视图view
     }
-  })
-</script>
-</body>
+
+    // 更新属性值对应的数据
+    Watcher.prototype.update = function () {
+      this.el[this.attr] = this.vm.$data[this.val]
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World'
+      },
+      methods: {
+        changeValue () {
+          this.message = 'Value is changed'
+        }
+      }
+    })
+    </script>
+  </body>
 </html>

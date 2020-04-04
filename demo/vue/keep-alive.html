@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>动态组件</title>
-  <script src="../../js/Vue-2.5.17.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    .menu {
-      width: 200px;
-      display: flex;
-      align-items: center;
-    }
-    .menu > span {
-      flex-grow: 1;
-      background: #cccccc;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-    }
-    .menu > span.active {
-      background: rosybrown;
-      color: #ffffff;
-    }
-    .menu > span:nth-child(1) {
-      border-right: 1px solid red;
-    }
-    .content {
-      border: 1px solid red;
-      width: 400px;
-    }
-    .com-a {
-      display: flex;
-    }
-    .com-a > .com-a-menu {
-      display: flex;
-      flex-direction: column;
-      width: 20%;
-    }
-    .com-a-menu > span {
-      background: skyblue;
-      height: 40px;
-      line-height: 40px;
-    }
-    .com-a-menu > span.active {
-      background: darkblue;
-      color: #ffffff;
-    }
-  </style>
-</head>
-<body>
-<div id="app">
-  <div class="menu">
-    <span :class="{active: com === 'com-a'}" @click="com='com-a'">菜单1</span>
-    <span :class="{active: com === 'com-b'}" @click="com='com-b'">菜单2</span>
-  </div>
-  <div class="content">
-    <!-- 失活的组件将会被缓存！-->
-    <keep-alive>
-      <component :is="com"></component>
-    </keep-alive>
-  </div>
-</div>
-<template id="com-a" type="x/template">
-  <div class="com-a">
-    <div class="com-a-menu">
-      <span :class="{active: menu === 1}" @click="menu=1">菜单一</span>
-      <span :class="{active: menu === 2}" @click="menu=2">菜单二</span>
-      <span :class="{active: menu === 3}" @click="menu=3">菜单三</span>
-    </div>
-    <div class="com-a-content">
-      <p v-if="menu === 1">菜单1内容</p>
-      <p v-if="menu === 2">菜单2内容</p>
-      <p v-if="menu === 3">菜单3内容</p>
-    </div>
-  </div>
-</template>
-
-<script>
-  Vue.component('com-a', {
-    template: `#com-a`,
-    data () {
-      return {
-        menu: 1
+  <head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <script src="../../js/Vue-2.5.17.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
       }
-    }
-  })
-  Vue.component('com-b', {
-    template: `<div>World</div>`
-  })
+      .menu {
+        width: 200px;
+        display: flex;
+        align-items: center;
+      }
+      .menu > span {
+        flex-grow: 1;
+        background: #cccccc;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      .menu > span.active {
+        background: rosybrown;
+        color: #ffffff;
+      }
+      .menu > span:nth-child(1) {
+        border-right: 1px solid red;
+      }
+      .content {
+        border: 1px solid red;
+        width: 400px;
+      }
+      .com-a {
+        display: flex;
+      }
+      .com-a > .com-a-menu {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+      }
+      .com-a-menu > span {
+        background: skyblue;
+        height: 40px;
+        line-height: 40px;
+      }
+      .com-a-menu > span.active {
+        background: darkblue;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="menu">
+        <span :class="{active: com === 'com-a'}" @click="com='com-a'">菜单1</span>
+        <span :class="{active: com === 'com-b'}" @click="com='com-b'">菜单2</span>
+      </div>
+      <div class="content">
+        <!-- 失活的组件将会被缓存！-->
+        <keep-alive>
+          <component :is="com"></component>
+        </keep-alive>
+      </div>
+    </div>
+    <template id="com-a" type="x/template">
+      <div class="com-a">
+        <div class="com-a-menu">
+          <span :class="{active: menu === 1}" @click="menu=1">菜单一</span>
+          <span :class="{active: menu === 2}" @click="menu=2">菜单二</span>
+          <span :class="{active: menu === 3}" @click="menu=3">菜单三</span>
+        </div>
+        <div class="com-a-content">
+          <p v-if="menu === 1">菜单1内容</p>
+          <p v-if="menu === 2">菜单2内容</p>
+          <p v-if="menu === 3">菜单3内容</p>
+        </div>
+      </div>
+    </template>
 
-  new Vue({
-    el: '#app',
-    data: {
-      com: 'com-a'
-    }
-  })
-</script>
-</body>
+    <script>
+    Vue.component('com-a', {
+      template: `#com-a`,
+      data () {
+        return {
+          menu: 1
+        }
+      }
+    })
+    Vue.component('com-b', {
+      template: `<div>World</div>`
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        com: 'com-a'
+      }
+    })
+    </script>
+  </body>
 </html>

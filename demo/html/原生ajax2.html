@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>原生ajax2</title>
-</head>
-<body>
-<script>
-  // 实例化一个ajax对象
-  let ajax = new XMLHttpRequest()
-  ajax.open('post', 'https://api.apiopen.top/searchAuthors')
-  // 使用原生ajax，如果不设置"Content-Type"，则默认使用"Content-Type"="text/plain;charset=UTF-8"
-  // 如果为提交表单，则默认"Content-Type"="application/x-www-form-urlencoded"
-  // 如果表单为提交文件，则默认"Content-Type"="multipart/form-data"
-  // 设置"Content-Type"为"application/x-www-form-urlencoded"（form表单形式）
-  // data应为'a=a1&b=b1'这种字符串格式，在jq里如果data为对象会自动将对象转成这种字符串格式（Form Data）
-  // 设置"Content-Type"为"application/json"
-  // data应为{"a": 1, "b": 2}（json对象格式）
-  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-  ajax.send('name=李白')
-  ajax.onreadystatechange = function () {
-    // readyState == 4说明请求已完成
-    if (ajax.readyState === 4 && ajax.status === 200) {
-      // 从服务器获得数据
-      console.log(ajax)
-    } else if (ajax.readyState === 4 && ajax.status !== 200) {
-      console.log(ajax.responseText)
+  <head>
+    <meta charset="UTF-8">
+    <title>原生ajax2</title>
+  </head>
+  <body>
+    <script>
+    // 实例化一个ajax对象
+    let ajax = new XMLHttpRequest()
+    ajax.open('post', 'https://api.apiopen.top/searchAuthors')
+    // 使用原生ajax，如果不设置"Content-Type"，则默认使用"Content-Type"="text/plain;charset=UTF-8"
+    // 如果为提交表单，则默认"Content-Type"="application/x-www-form-urlencoded"
+    // 如果表单为提交文件，则默认"Content-Type"="multipart/form-data"
+    // 设置"Content-Type"为"application/x-www-form-urlencoded"（form表单形式）
+    // data应为'a=a1&b=b1'这种字符串格式，在jq里如果data为对象会自动将对象转成这种字符串格式（Form Data）
+    // 设置"Content-Type"为"application/json"
+    // data应为{"a": 1, "b": 2}（json对象格式）
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    ajax.send('name=李白')
+    ajax.onreadystatechange = function () {
+      // readyState == 4说明请求已完成
+      if (ajax.readyState === 4 && ajax.status === 200) {
+        // 从服务器获得数据
+        console.log(ajax)
+      } else if (ajax.readyState === 4 && ajax.status !== 200) {
+        console.log(ajax.responseText)
+      }
     }
-  }
-</script>
-</body>
+    </script>
+  </body>
 </html>

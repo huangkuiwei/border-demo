@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>tab切换</title>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-    }
-    div.box {
-      width: 500px;
-      margin: 100px auto;
-      border: 1px solid red;
-    }
-    div.box > div.tab {
-      display: flex;
-      text-align: center;
-    }
-    div.box > div.tab > span {
-      border: 1px solid red;
-      border-top: none;
-      height: 30px;
-      line-height: 30px;
-      flex: 1 0 auto;
-      cursor: pointer;
-    }
-    div.box > div.tab > span:first-child {
-      border-left: none;
-      border-right: none;
-    }
-    div.box > div.tab > span:last-child {
-      border-left: none;
-      border-right: none;
-    }
-    div.box > div.content {
-      height: 200px;
-    }
-  </style>
-</head>
-<body>
-<div class="box">
-  <div class="tab">
-    <span>tab1</span><span>tab2</span><span>tab3</span>
-  </div>
-  <div class="content"></div>
-</div>
-
-<script>
-  let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容']
-  let spans = document.getElementsByTagName('span')
-  let content = document.getElementsByClassName('content')[0]
-  content.innerHTML = textList[0]
-  spans[0].style.background = 'red'
-  for (let i = 0; i < spans.length; i++) {
-    spans[i].onclick = function () {
-      content.innerHTML = textList[i]
-      for (let j = 0; j < spans.length; j++) {
-        spans[j].style.background = 'none'
+  <head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
       }
-      this.style.background = 'red'
+      div.box {
+        width: 500px;
+        margin: 100px auto;
+        border: 1px solid red;
+      }
+      div.box > div.tab {
+        display: flex;
+        text-align: center;
+      }
+      div.box > div.tab > span {
+        border: 1px solid red;
+        border-top: none;
+        height: 30px;
+        line-height: 30px;
+        flex: 1 0 auto;
+        cursor: pointer;
+      }
+      div.box > div.tab > span:first-child {
+        border-left: none;
+        border-right: none;
+      }
+      div.box > div.tab > span:last-child {
+        border-left: none;
+        border-right: none;
+      }
+      div.box > div.content {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="tab">
+        <span>tab1</span><span>tab2</span><span>tab3</span>
+      </div>
+      <div class="content"></div>
+    </div>
+
+    <script>
+    let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容']
+    let spans = document.getElementsByTagName('span')
+    let content = document.getElementsByClassName('content')[0]
+    content.innerHTML = textList[0]
+    spans[0].style.background = 'red'
+    for (let i = 0; i < spans.length; i++) {
+      spans[i].onclick = function () {
+        content.innerHTML = textList[i]
+        for (let j = 0; j < spans.length; j++) {
+          spans[j].style.background = 'none'
+        }
+        this.style.background = 'red'
+      }
     }
-  }
-</script>
-</body>
+    </script>
+  </body>
 </html>
