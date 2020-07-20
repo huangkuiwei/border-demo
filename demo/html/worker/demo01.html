@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>demo01</title>
+  </head>
+  <body>
+    <div class="time"></div>
+    <button id="btn">按钮</button>
+
+    <script>
+    let worker = new Worker('./index.js?123')
+    let time = document.querySelector('.time')
+    let btn = document.querySelector('#btn')
+    btn.addEventListener('click', function () {
+      let arr = new Array(100000)
+      for (let i = 0; i < arr.length; i++) {
+        console.log(i)
+      }
+    })
+    worker.onmessage = function (e) {
+      time.innerHTML = e.data
+    }
+    </script>
+  </body>
+</html>
