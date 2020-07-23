@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>图片懒加载</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      height: 400px;
+      width: 600px;
+      overflow: auto;
+      margin: 100px auto;
+      border: 1px solid burlywood;
+      position: relative;
+    }
+    .box > img {
+      width: 500px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <img data-src="http://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&f=JPEG?w=1280&h=853" alt="">
+      <img data-src="http://t8.baidu.com/it/u=2247852322,986532796&fm=79&app=86&f=JPEG?w=1280&h=853" alt="">
+      <img data-src="http://t9.baidu.com/it/u=4169540006,4220376401&fm=79&app=86&f=JPEG?w=1000&h=1500" alt="">
+      <img data-src="http://t9.baidu.com/it/u=3363001160,1163944807&fm=79&app=86&f=JPEG?w=1280&h=830" alt="">
+    </div>
+
+    <script>
+    const box = document.querySelector('.box')
+
+    function onScroll () {
+      box.querySelectorAll('img').forEach(imgDom => {
+        console.log(imgDom.offsetTop, box.clientHeight, box.scrollTop)
+        if (imgDom.offsetTop <= box.clientHeight + box.scrollTop) {
+          const src = imgDom.getAttribute('data-src')
+          imgDom.setAttribute('src', src)
+        }
+      })
+    }
+
+    box.addEventListener('scroll', onScroll)
+    onScroll()
+    </script>
+  </body>
+</html>
