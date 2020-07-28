@@ -32,47 +32,47 @@
     </div>
 
     <script>
-    class Menu {
-      constructor (obj) {
-        this.menu = document.getElementById(obj)
-        this.btn = this.menu.querySelectorAll('button')
-        this.div = this.menu.querySelectorAll('div')
-        this.colorList = ['red', 'green', 'blue']
-        this.index = 0
-        this.init()
-        for (let i = 0; i < this.btn.length; i++) {
-          this.btn[i].onclick = () => {
-            this.index = i
-            this.hide()
-            this.show()
+      class Menu {
+        constructor (obj) {
+          this.menu = document.getElementById(obj)
+          this.btn = this.menu.querySelectorAll('button')
+          this.div = this.menu.querySelectorAll('div')
+          this.colorList = ['red', 'green', 'blue']
+          this.index = 0
+          this.init()
+          for (let i = 0; i < this.btn.length; i++) {
+            this.btn[i].onclick = () => {
+              this.index = i
+              this.hide()
+              this.show()
+            }
           }
         }
-      }
 
-      init () {
-        for (let i = 0; i < this.div.length; i++) {
-          this.div[i].style.display = 'none'
+        init () {
+          for (let i = 0; i < this.div.length; i++) {
+            this.div[i].style.display = 'none'
+          }
+          this.div[this.index].style.display = 'block'
+          this.div[this.index].style.background = this.colorList[this.index]
+          this.btn[this.index].style.background = this.colorList[this.index]
         }
-        this.div[this.index].style.display = 'block'
-        this.div[this.index].style.background = this.colorList[this.index]
-        this.btn[this.index].style.background = this.colorList[this.index]
-      }
 
-      hide () {
-        for (let i = 0; i < this.div.length; i++) {
-          this.div[i].style.display = 'none'
-          this.btn[i].style.background = null
+        hide () {
+          for (let i = 0; i < this.div.length; i++) {
+            this.div[i].style.display = 'none'
+            this.btn[i].style.background = null
+          }
+        }
+
+        show () {
+          this.div[this.index].style.display = 'block'
+          this.div[this.index].style.background = this.colorList[this.index]
+          this.btn[this.index].style.background = this.colorList[this.index]
         }
       }
 
-      show () {
-        this.div[this.index].style.display = 'block'
-        this.div[this.index].style.background = this.colorList[this.index]
-        this.btn[this.index].style.background = this.colorList[this.index]
-      }
-    }
-
-    new Menu('menu')
+      new Menu('menu')
     </script>
   </body>
 </html>

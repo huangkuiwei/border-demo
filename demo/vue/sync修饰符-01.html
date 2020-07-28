@@ -14,22 +14,22 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      props: ['message'],
-      template: '<div>{{message}}<button @click="changeMessage">修改message</button></div>',
-      methods: {
-        changeMessage () {
-          this.$emit('update:message', 'Hello Vue.js')
+      Vue.component('com-a', {
+        props: ['message'],
+        template: '<div>{{message}}<button @click="changeMessage">修改message</button></div>',
+        methods: {
+          changeMessage () {
+            this.$emit('update:message', 'Hello Vue.js')
+          }
         }
-      }
-    })
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello World'
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello World'
+        }
+      })
     </script>
   </body>
 </html>

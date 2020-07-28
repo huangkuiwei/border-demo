@@ -20,21 +20,21 @@
       </div>
     </template>
     <script>
-    Vue.component('com-a', {
-      template: '#com-a',
-      created () {
-        console.log(this.$listeners)
-      }
-    })
-
-    new Vue({
-      el: '#app',
-      methods: {
-        greet () {
-          console.log('Hello World')
+      Vue.component('com-a', {
+        template: '#com-a',
+        created () {
+          console.log(this.$listeners)
         }
-      }
-    })
+      })
+
+      new Vue({
+        el: '#app',
+        methods: {
+          greet () {
+            console.log('Hello World')
+          }
+        }
+      })
     </script>
   </body>
 </html>

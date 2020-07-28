@@ -6,21 +6,21 @@
   </head>
   <body>
     <script>
-    async function sleep (time) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, time)
-      })
-    }
+      async function sleep (time) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        })
+      }
 
-    // await必须在async函数的上下文中的。
-    async function fn () {
-      await sleep(3000)
-      console.log('3秒后执行')
-    }
+      // await必须在async函数的上下文中的。
+      async function fn () {
+        await sleep(3000)
+        console.log('3秒后执行')
+      }
 
-    fn()
+      fn()
     </script>
   </body>
 </html>

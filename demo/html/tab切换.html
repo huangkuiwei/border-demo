@@ -47,20 +47,20 @@
     </div>
 
     <script>
-    let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容']
-    let spans = document.getElementsByTagName('span')
-    let content = document.getElementsByClassName('content')[0]
-    content.innerHTML = textList[0]
-    spans[0].style.background = 'red'
-    for (let i = 0; i < spans.length; i++) {
-      spans[i].onclick = function () {
-        content.innerHTML = textList[i]
-        for (let j = 0; j < spans.length; j++) {
-          spans[j].style.background = 'none'
+      let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容']
+      let spans = document.getElementsByTagName('span')
+      let content = document.getElementsByClassName('content')[0]
+      content.innerHTML = textList[0]
+      spans[0].style.background = 'red'
+      for (let i = 0; i < spans.length; i++) {
+        spans[i].onclick = function () {
+          content.innerHTML = textList[i]
+          for (let j = 0; j < spans.length; j++) {
+            spans[j].style.background = 'none'
+          }
+          this.style.background = 'red'
         }
-        this.style.background = 'red'
       }
-    }
     </script>
   </body>
 </html>

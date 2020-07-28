@@ -13,34 +13,34 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      render (h) {
-        return h(
-          'h' + this.grade,
-          [
-            h(
-              'a',
-              {
-                attrs: {
-                  name: this.name,
-                  href: '#' + this.name
-                }
-              },
-              [this.$slots.default]
-            )
-          ]
-        )
-      },
-      props: {
-        grade: Number,
-        name: String
-      }
-    })
+      Vue.component('com-a', {
+        render (h) {
+          return h(
+            'h' + this.grade,
+            [
+              h(
+                'a',
+                {
+                  attrs: {
+                    name: this.name,
+                    href: '#' + this.name
+                  }
+                },
+                [this.$slots.default]
+              )
+            ]
+          )
+        },
+        props: {
+          grade: Number,
+          name: String
+        }
+      })
 
-    new Vue({
-      el: '#app'
+      new Vue({
+        el: '#app'
 
-    })
+      })
     </script>
   </body>
 </html>

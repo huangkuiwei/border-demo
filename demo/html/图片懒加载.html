@@ -30,20 +30,20 @@
     </div>
 
     <script>
-    const box = document.querySelector('.box')
+      const box = document.querySelector('.box')
 
-    function onScroll () {
-      box.querySelectorAll('img').forEach(imgDom => {
-        console.log(imgDom.offsetTop, box.clientHeight, box.scrollTop)
-        if (imgDom.offsetTop <= box.clientHeight + box.scrollTop) {
-          const src = imgDom.getAttribute('data-src')
-          imgDom.setAttribute('src', src)
-        }
-      })
-    }
+      function onScroll () {
+        box.querySelectorAll('img').forEach(imgDom => {
+          console.log(imgDom.offsetTop, box.clientHeight, box.scrollTop)
+          if (imgDom.offsetTop <= box.clientHeight + box.scrollTop) {
+            const src = imgDom.getAttribute('data-src')
+            imgDom.setAttribute('src', src)
+          }
+        })
+      }
 
-    box.addEventListener('scroll', onScroll)
-    onScroll()
+      box.addEventListener('scroll', onScroll)
+      onScroll()
     </script>
   </body>
 </html>

@@ -80,24 +80,24 @@
     </template>
 
     <script>
-    Vue.component('com-a', {
-      template: `#com-a`,
-      data () {
-        return {
-          menu: 1
+      Vue.component('com-a', {
+        template: `#com-a`,
+        data () {
+          return {
+            menu: 1
+          }
         }
-      }
-    })
-    Vue.component('com-b', {
-      template: `<div>World</div>`
-    })
+      })
+      Vue.component('com-b', {
+        template: `<div>World</div>`
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        com: 'com-a'
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          com: 'com-a'
+        }
+      })
     </script>
   </body>
 </html>

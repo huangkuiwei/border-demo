@@ -8,15 +8,15 @@
   <body>
 
     <script>
-    $.ajax({
-      url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',     //可以不是本地域名
-      type: 'get',                    //jsonp只支持get
-      dataType: 'jsonp',              //jsonp格式访问
-      jsonp: 'cb',                    //定义了callback的参数名称，默认callback
-      data: {                         //向服务器发送的数据
-        wd: 'Hello'
-      }
-    })
+      $.ajax({
+        url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',     //可以不是本地域名
+        type: 'get',                    //jsonp只支持get
+        dataType: 'jsonp',              //jsonp格式访问
+        jsonp: 'cb',                    //定义了callback的参数名称，默认callback
+        data: {                         //向服务器发送的数据
+          wd: 'Hello'
+        }
+      })
     </script>
   </body>
 </html>

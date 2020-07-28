@@ -39,15 +39,15 @@
     </div>
 
     <script>
-    let imgs = document.body.querySelector('.imgs')
-    let img = document.body.querySelectorAll('img')
-    setInterval(() => {
-      if (parseInt(imgs.style.left || 0) <= -600 * (img.length - 1)) {
-        imgs.style.left = 0
-      } else {
-        imgs.style.left = (parseInt(imgs.style.left || 0)) - 600 + 'px'
-      }
-    }, 3000)
+      let imgs = document.body.querySelector('.imgs')
+      let img = document.body.querySelectorAll('img')
+      setInterval(() => {
+        if (parseInt(imgs.style.left || 0) <= -600 * (img.length - 1)) {
+          imgs.style.left = 0
+        } else {
+          imgs.style.left = (parseInt(imgs.style.left || 0)) - 600 + 'px'
+        }
+      }, 3000)
     </script>
   </body>
 </html>

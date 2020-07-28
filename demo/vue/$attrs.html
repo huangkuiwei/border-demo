@@ -16,18 +16,18 @@
       </div>
     </template>
     <script>
-    Vue.component('com-a', {
-      template: '#com-a',
-      // 组件的根元素不会继承
-      inheritAttrs: false,
-      created () {
-        console.log(this.$attrs)
-      }
-    })
+      Vue.component('com-a', {
+        template: '#com-a',
+        // 组件的根元素不会继承
+        inheritAttrs: false,
+        created () {
+          console.log(this.$attrs)
+        }
+      })
 
-    new Vue({
-      el: '#app'
-    })
+      new Vue({
+        el: '#app'
+      })
     </script>
   </body>
 </html>

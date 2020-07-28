@@ -13,30 +13,30 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      render (h) {
-        return h({
-          inheritAttrs: false,
-          render (h) {
-            return h('div', { class: ['b'] }, [h('span', { attrs: { tip: this.$attrs.tip } }, 'span标签'), this.$slots.default])
-          },
-          created () {
-            console.log(this.$attrs)
-          }
-        }, {
-          attrs: {
-            tip: 'tip'
-          }
-        }, [h('p', '123')])
-      },
-      created () {
-        console.log()
-      }
-    })
+      Vue.component('com-a', {
+        render (h) {
+          return h({
+            inheritAttrs: false,
+            render (h) {
+              return h('div', { class: ['b'] }, [h('span', { attrs: { tip: this.$attrs.tip } }, 'span标签'), this.$slots.default])
+            },
+            created () {
+              console.log(this.$attrs)
+            }
+          }, {
+            attrs: {
+              tip: 'tip'
+            }
+          }, [h('p', '123')])
+        },
+        created () {
+          console.log()
+        }
+      })
 
-    new Vue({
-      el: '#app'
-    })
+      new Vue({
+        el: '#app'
+      })
     </script>
   </body>
 </html>

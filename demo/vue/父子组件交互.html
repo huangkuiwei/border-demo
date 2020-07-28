@@ -17,41 +17,45 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      template: `<div><label>{{label}}：<input ref="input" type="text" :value="value" @focus="$listeners.focus" @input="message = $event.target.value" :placeholder="$attrs.placeholder"></label><slot :username="username">default</slot></div>`,
-      props: ['value', 'label'],
-      inheritAttrs: false,
-      data () {
-        return {
-          username: 'huang'
-        }
-      },
-      methods: {
-        focus () {
-          this.$refs.input.focus()
-        }
-      },
-      created () {
-        console.log(this.$attrs)
-        console.log(this.$listeners)
-        this.$root.message = 'world'
-      }
-    })
-
-    new Vue({
-      el: '#app',
-      data: {
-        message: 'hello'
-      },
-      methods: {
-        greet () {
-          console.log('hello world')
+      Vue.component('com-a', {
+        template: `
+          <div>
+          <label>{{ label }}：<input ref="input" type="text" :value="value" @focus="$listeners.focus" @input="message = $event.target.value" :placeholder="$attrs.placeholder"></label>
+          <slot :username="username">default</slot>
+          </div>`,
+        props: ['value', 'label'],
+        inheritAttrs: false,
+        data () {
+          return {
+            username: 'huang'
+          }
         },
-        focus () {
-          this.$refs.comA.focus()
+        methods: {
+          focus () {
+            this.$refs.input.focus()
+          }
+        },
+        created () {
+          console.log(this.$attrs)
+          console.log(this.$listeners)
+          this.$root.message = 'world'
         }
-      }
-    })
+      })
+
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'hello'
+        },
+        methods: {
+          greet () {
+            console.log('hello world')
+          },
+          focus () {
+            this.$refs.comA.focus()
+          }
+        }
+      })
     </script>
   </body>
 </html>

@@ -12,27 +12,27 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      template: `<div><button @click="$root.$emit('busDemo','Hello World')">按钮</button></div>`
-    })
+      Vue.component('com-a', {
+        template: `<div><button @click="$root.$emit('busDemo','Hello World')">按钮</button></div>`
+      })
 
-    Vue.component('com-b', {
-      template: `<div>com-b</div>`,
-      created () {
-        this.$root.$on('busDemo', message => {
-          alert(message)
-        })
-      }
-    })
+      Vue.component('com-b', {
+        template: `<div>com-b</div>`,
+        created () {
+          this.$root.$on('busDemo', message => {
+            alert(message)
+          })
+        }
+      })
 
-    new Vue({
-      el: '#app',
-      created () {
-        this.$on('busDemo', message => {
-          alert(message)
-        })
-      }
-    })
+      new Vue({
+        el: '#app',
+        created () {
+          this.$on('busDemo', message => {
+            alert(message)
+          })
+        }
+      })
     </script>
   </body>
 </html>

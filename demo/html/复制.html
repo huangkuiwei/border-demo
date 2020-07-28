@@ -11,20 +11,20 @@
     </div>
 
     <script>
-    function copy (text) {
-      const input = document.createElement('input')
-      input.value = text
-      document.body.appendChild(input)
-      input.select()
-      document.execCommand('Copy')
-      document.body.removeChild(input)
-    }
+      function copy (text) {
+        const input = document.createElement('input')
+        input.value = text
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('Copy')
+        document.body.removeChild(input)
+      }
 
-    let s = document.getElementsByTagName('span')[0]
-    let btn = document.getElementsByTagName('button')[0]
-    btn.onclick = function () {
-      copy(s.innerText)
-    }
+      let s = document.getElementsByTagName('span')[0]
+      let btn = document.getElementsByTagName('button')[0]
+      btn.onclick = function () {
+        copy(s.innerText)
+      }
     </script>
   </body>
 </html>

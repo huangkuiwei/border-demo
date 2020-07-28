@@ -31,42 +31,42 @@
     </div>
 
     <script>
-    Vue.component('img-upload', {
-      template: '<div><slot></slot></div>',
-      props: {
-        accept: [String],
-        maxSize: [Number],
-        max: [Number]
-      },
-      mounted () {
-        this.$el.onclick = this.pick
-        this.$input = document.createElement('input')
-        this.$input.type = 'file'
-        this.$input.accept = this.accept
-        this.$input.onchange = this.upload
-      },
-      methods: {
-        pick () {
-          this.$input.value = ''
-          //模拟用户点击
-          this.$input.click()
+      Vue.component('img-upload', {
+        template: '<div><slot></slot></div>',
+        props: {
+          accept: [String],
+          maxSize: [Number],
+          max: [Number]
         },
-        upload (e) {
-          if (this.maxSize && this.maxSize < e.target.files[0].size / 1024) {
-            console.log('文件过大')
-            return
+        mounted () {
+          this.$el.onclick = this.pick
+          this.$input = document.createElement('input')
+          this.$input.type = 'file'
+          this.$input.accept = this.accept
+          this.$input.onchange = this.upload
+        },
+        methods: {
+          pick () {
+            this.$input.value = ''
+            //模拟用户点击
+            this.$input.click()
+          },
+          upload (e) {
+            if (this.maxSize && this.maxSize < e.target.files[0].size / 1024) {
+              console.log('文件过大')
+              return
+            }
+            this.$emit('upload-success', e.target.files[0].name)
           }
-          this.$emit('upload-success', e.target.files[0].name)
         }
-      }
-    })
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        imageList: []
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          imageList: []
+        }
+      })
     </script>
   </body>
 </html>

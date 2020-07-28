@@ -19,34 +19,34 @@
     </template>
 
     <script>
-    Vue.component('com-a', {
-      //这样会把对象中的每一个属性都作为一个独立的 prop 传进去，然后各自添加用于更新的 v-on 监听器。
-      props: ['name', 'age', 'address'],
-      data () {
-        return {
-          newName: ''
+      Vue.component('com-a', {
+        //这样会把对象中的每一个属性都作为一个独立的 prop 传进去，然后各自添加用于更新的 v-on 监听器。
+        props: ['name', 'age', 'address'],
+        data () {
+          return {
+            newName: ''
+          }
+        },
+        template: '#com-a',
+        methods: {
+          changeValue () {
+            //类似于v-model
+            this.$emit('update:name', this.newName)
+            this.newName = ''
+          }
         }
-      },
-      template: '#com-a',
-      methods: {
-        changeValue () {
-          //类似于v-model
-          this.$emit('update:name', this.newName)
-          this.newName = ''
-        }
-      }
-    })
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        obj: {
-          name: 'huangkuiwei',
-          age: 24,
-          address: '长沙'
+      new Vue({
+        el: '#app',
+        data: {
+          obj: {
+            name: 'huangkuiwei',
+            age: 24,
+            address: '长沙'
+          }
         }
-      }
-    })
+      })
     </script>
   </body>
 </html>

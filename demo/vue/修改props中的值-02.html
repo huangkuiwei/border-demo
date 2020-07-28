@@ -11,40 +11,40 @@
     </div>
 
     <script>
-    /*
-    一般在下面的情况会修改props：
-    1.Prop 作为初始值传入后，子组件想把它当作局部数据来用；
-    2.Prop 作为原始数据传入，由子组件处理成其它数据输出。
-    修改props里面的值正确方法：
-    1.子组件定义一个局部变量，并用prop值初始化这个局部变量。
-    2.定义一个计算属性，处理 prop 的值并返回：
-     */
-    Vue.component('com-a', {
-      props: ['message'],
-      template: '<div>{{title}}<button @click="changeTitle">修改title</button>{{title1}}</div>',
-      data () {
-        return {
-          title: this.message
+      /*
+      一般在下面的情况会修改props：
+      1.Prop 作为初始值传入后，子组件想把它当作局部数据来用；
+      2.Prop 作为原始数据传入，由子组件处理成其它数据输出。
+      修改props里面的值正确方法：
+      1.子组件定义一个局部变量，并用prop值初始化这个局部变量。
+      2.定义一个计算属性，处理 prop 的值并返回：
+       */
+      Vue.component('com-a', {
+        props: ['message'],
+        template: '<div>{{title}}<button @click="changeTitle">修改title</button>{{title1}}</div>',
+        data () {
+          return {
+            title: this.message
+          }
+        },
+        computed: {
+          title1 () {
+            return this.message + 'hello'
+          }
+        },
+        methods: {
+          changeTitle () {
+            this.title = 'Hello Vue.js'
+          }
         }
-      },
-      computed: {
-        title1 () {
-          return this.message + 'hello'
-        }
-      },
-      methods: {
-        changeTitle () {
-          this.title = 'Hello Vue.js'
-        }
-      }
-    })
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello World'
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello World'
+        }
+      })
     </script>
   </body>
 </html>

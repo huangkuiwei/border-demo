@@ -12,22 +12,22 @@
     </div>
 
     <script>
-    Vue.component('demo-com', {
-      props: ['greet'],
-      template: '<div><button @click="greet()">按钮</button></div>'
-    })
+      Vue.component('demo-com', {
+        props: ['greet'],
+        template: '<div><button @click="greet()">按钮</button></div>'
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        msg: 'Hello World'
-      },
-      methods: {
-        show () {
-          console.log(this.msg)
+      new Vue({
+        el: '#app',
+        data: {
+          msg: 'Hello World'
+        },
+        methods: {
+          show () {
+            console.log(this.msg)
+          }
         }
-      }
-    })
+      })
     </script>
   </body>
 </html>

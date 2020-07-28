@@ -6,17 +6,17 @@
   </head>
   <body>
     <script>
-    function sleep (time) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, time)
-      })
-    }
+      function sleep (time) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        })
+      }
 
-    sleep(3000).then(() => {
-      console.log('hello world')
-    })
+      sleep(3000).then(() => {
+        console.log('hello world')
+      })
     </script>
   </body>
 </html>

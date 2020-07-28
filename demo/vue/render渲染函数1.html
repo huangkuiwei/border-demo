@@ -14,25 +14,25 @@
     </div>
 
     <script>
-    Vue.component('com-a', {
-      render (h) {
-        // <slot/>
-        return h('div', {
-          class: ['com-a', 'test'],
-          style: {
-            'font-size': '20px'
-          }
-        }, [this.$slots.default, this.$slots.title])
-      },
-      mounted () {
-        // 该组件的根节点
-        console.log(this.$el)
-      }
-    })
+      Vue.component('com-a', {
+        render (h) {
+          // <slot/>
+          return h('div', {
+            class: ['com-a', 'test'],
+            style: {
+              'font-size': '20px'
+            }
+          }, [this.$slots.default, this.$slots.title])
+        },
+        mounted () {
+          // 该组件的根节点
+          console.log(this.$el)
+        }
+      })
 
-    new Vue({
-      el: '#app'
-    })
+      new Vue({
+        el: '#app'
+      })
     </script>
   </body>
 </html>

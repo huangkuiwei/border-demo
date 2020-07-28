@@ -15,23 +15,23 @@
     </div>
 
     <script>
-    new Vue({
-      el: '#app',
-      data: {
-        list: [
-          { id: 1, name: '张三', age: 34 },
-          { id: 2, name: '李四', age: 44 },
-          { id: 3, name: '王五', age: 15 },
-          { id: 4, name: '赵六', age: 40 }
-        ]
-      },
-      //可在created钩子函数中修改
-      created: function () {
-        this.list.forEach(item => {
-          item.name += '被修改了'
-        })
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          list: [
+            { id: 1, name: '张三', age: 34 },
+            { id: 2, name: '李四', age: 44 },
+            { id: 3, name: '王五', age: 15 },
+            { id: 4, name: '赵六', age: 40 }
+          ]
+        },
+        //可在created钩子函数中修改
+        created: function () {
+          this.list.forEach(item => {
+            item.name += '被修改了'
+          })
+        }
+      })
     </script>
   </body>
 </html>

@@ -26,33 +26,33 @@
     </template>
 
     <script>
-    // 1、ref 需要在dom渲染完成后才会有，在使用的时候确保dom已经渲染完成。比如在生命周期 mounted(){} 钩子中调用，或者在 this.$nextTick(()=>{}) 中调用。
-    // 2、如果ref 是循环出来的，那么ref的值会是一个数组 ，此时要拿到单个的ref 只需要循环就可以了。
-    Vue.component('com-a', {
-      template: '#com-a',
-      data () {
-        return {
-          title: '子组件标题'
+      // 1、ref 需要在dom渲染完成后才会有，在使用的时候确保dom已经渲染完成。比如在生命周期 mounted(){} 钩子中调用，或者在 this.$nextTick(()=>{}) 中调用。
+      // 2、如果ref 是循环出来的，那么ref的值会是一个数组 ，此时要拿到单个的ref 只需要循环就可以了。
+      Vue.component('com-a', {
+        template: '#com-a',
+        data () {
+          return {
+            title: '子组件标题'
+          }
+        },
+        methods: {
+          // 子组件定义方法
+          changeTitle () {
+            this.title = '子组件标题被修改了'
+          }
         }
-      },
-      methods: {
-        // 子组件定义方法
-        changeTitle () {
-          this.title = '子组件标题被修改了'
-        }
-      }
-    })
+      })
 
-    new Vue({
-      el: '#app',
-      data: {
-        title: '文章标题',
-        content: '这是文章内容'
-      },
-      mounted () {
-        console.log(this.$refs)
-      }
-    })
+      new Vue({
+        el: '#app',
+        data: {
+          title: '文章标题',
+          content: '这是文章内容'
+        },
+        mounted () {
+          console.log(this.$refs)
+        }
+      })
     </script>
   </body>
 </html>
