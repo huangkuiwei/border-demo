@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>内部属性[[Class]]</title>
+  </head>
+  <body>
+    <script>
+      function People () {
+      }
+
+      // 内部属性 Symbol.toStringTag 会在调用 Object.prototype.toString.call() 方法的时候生效
+      People.prototype[Symbol.toStringTag] = 'People'
+      const p1 = new People()
+
+      console.log(Object.prototype.toString.call(p1))
+    </script>
+  </body>
+</html>
