@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>$listeners</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -22,19 +22,19 @@
     <script>
       Vue.component('com-a', {
         template: '#com-a',
-        created () {
-          console.log(this.$listeners)
-        }
-      })
+        created() {
+          console.log(this.$listeners);
+        },
+      });
 
       new Vue({
         el: '#app',
         methods: {
-          greet () {
-            console.log('Hello World')
-          }
-        }
-      })
+          greet() {
+            console.log('Hello World');
+          },
+        },
+      });
     </script>
   </body>
 </html>

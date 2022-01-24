@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>$refs</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -11,9 +11,7 @@
       <p ref="content">{{content}}</p>
       <ul>
         <!-- 这里循环出来的是ref是数组 li: [li, li, li, li, li] -->
-        <li v-for="i in 5" ref="li">
-          {{i}}
-        </li>
+        <li v-for="i in 5" ref="li">{{i}}</li>
       </ul>
       <!-- 父组件通过 $refs 调用子组件方法 -->
       <button @click="$refs.comA.changeTitle()">按钮</button>
@@ -30,29 +28,29 @@
       // 2、如果ref 是循环出来的，那么ref的值会是一个数组 ，此时要拿到单个的ref 只需要循环就可以了。
       Vue.component('com-a', {
         template: '#com-a',
-        data () {
+        data() {
           return {
-            title: '子组件标题'
-          }
+            title: '子组件标题',
+          };
         },
         methods: {
           // 子组件定义方法
-          changeTitle () {
-            this.title = '子组件标题被修改了'
-          }
-        }
-      })
+          changeTitle() {
+            this.title = '子组件标题被修改了';
+          },
+        },
+      });
 
       new Vue({
         el: '#app',
         data: {
           title: '文章标题',
-          content: '这是文章内容'
+          content: '这是文章内容',
         },
-        mounted () {
-          console.log(this.$refs)
-        }
-      })
+        mounted() {
+          console.log(this.$refs);
+        },
+      });
     </script>
   </body>
 </html>

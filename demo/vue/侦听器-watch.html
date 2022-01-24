@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>侦听器-watch</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -22,63 +22,63 @@
           c: 3,
           d: {
             name: '张三',
-            age: 26
+            age: 26,
           },
           e: {
             f: {
-              g: 4
-            }
-          }
+              g: 4,
+            },
+          },
         },
         watch: {
-          //参数：val,oldVal
-          a (val, oldVal) {
-            console.log('a新值：' + val + '，a旧值：' + oldVal)
+          // 参数：val,oldVal
+          a(val, oldVal) {
+            console.log('a新值：' + val + '，a旧值：' + oldVal);
           },
-          b: 'watchValueB',     //注意：这里得方法名要打引号
+          b: 'watchValueB', // 注意：这里得方法名要打引号
           c: {
-            handler (val, oldVal) {
-              console.log('c新值：' + val + '，c旧值：' + oldVal)
+            handler(val, oldVal) {
+              console.log('c新值：' + val + '，c旧值：' + oldVal);
             },
-            //该回调将会在侦听开始之后被立即调用，第一次调用得时候旧值为：undefined
-            immediate: true
+            // 该回调将会在侦听开始之后被立即调用，第一次调用得时候旧值为：undefined
+            immediate: true,
           },
           d: {
-            handler (val, oldVal) {
-              console.log(val)
-              console.log(oldVal)
+            handler(val, oldVal) {
+              console.log(val);
+              console.log(oldVal);
             },
-            //为了发现对象内部值的变化，可以在选项参数中指定 deep: true 。注意监听数组的变动不需要这么做。
-            deep: true
+            // 为了发现对象内部值的变化，可以在选项参数中指定 deep: true 。注意监听数组的变动不需要这么做。
+            deep: true,
           },
           'e.f': {
-            handler (val, oldVal) {
-              console.log(val)
-              console.log(oldVal)       //如果监听是是一个对象，则要加deep属性，此时val oldVal的值一样
+            handler(val, oldVal) {
+              console.log(val);
+              console.log(oldVal); // 如果监听是是一个对象，则要加deep属性，此时val oldVal的值一样
             },
-            deep: true
-          }
+            deep: true,
+          },
         },
         methods: {
-          changeValueA () {
-            this.a = 11
+          changeValueA() {
+            this.a = 11;
           },
-          changeValueB () {
-            this.b = 22
+          changeValueB() {
+            this.b = 22;
           },
-          changeValueD () {
-            this.d.name = '李四'     //修改d.name的值
-            console.log(this.d)       //{age: 26, name: "李四"}
+          changeValueD() {
+            this.d.name = '李四'; // 修改d.name的值
+            console.log(this.d); // {age: 26, name: "李四"}
           },
-          changeValueE () {
-            this.e.f.g = 44
-            console.log(this.e)
+          changeValueE() {
+            this.e.f.g = 44;
+            console.log(this.e);
           },
-          watchValueB (val, oldVal) {
-            console.log('b新值：' + val + '，b旧值：' + oldVal)
-          }
-        }
-      })
+          watchValueB(val, oldVal) {
+            console.log('b新值：' + val + '，b旧值：' + oldVal);
+          },
+        },
+      });
     </script>
   </body>
 </html>

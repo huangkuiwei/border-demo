@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>简易垃圾分类</title>
     <style>
       * {
@@ -31,7 +34,7 @@
       .box > div {
         flex: 1;
         text-align: center;
-        transition: all .1s linear;
+        transition: all 0.1s linear;
       }
       .box > div > img {
         width: 100%;
@@ -41,75 +44,107 @@
   <body>
     <div id="app">
       <div class="rubbish">
-        <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="">
+        <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="" />
       </div>
       <div class="box">
         <div>
-          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="">
+          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="" />
         </div>
         <div>
-          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="">
+          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="" />
         </div>
         <div>
-          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="">
+          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="" />
         </div>
         <div>
-          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="">
+          <img src="http://img4.makepolo.net/img4/576/653/100015757653_14321781826035.jpg" alt="" />
         </div>
       </div>
     </div>
     <script>
-      let p = document.body.querySelector('.rubbish > img')
-      let divs = document.body.querySelectorAll('.box > div')
-      let startX, startY, center
+      let p = document.body.querySelector('.rubbish > img');
+      let divs = document.body.querySelectorAll('.box > div');
+      let startX, startY, center;
       p.ontouchstart = function (e) {
-        startX = e.touches[0].clientX - this.offsetLeft
-        startY = e.touches[0].clientY - this.offsetTop
-      }
+        startX = e.touches[0].clientX - this.offsetLeft;
+        startY = e.touches[0].clientY - this.offsetTop;
+      };
       p.ontouchmove = function (e) {
-        e.preventDefault()
-        p.style.top = e.touches[0].clientY - startY + 'px'
-        p.style.left = e.touches[0].clientX - startX + 'px'
-        center = this.offsetLeft + innerWidth * 0.2 / 2
-        if (center / innerWidth > 0 && center / innerWidth < 0.25 && this.offsetTop / innerHeight > 0.6) {
-          divs[0].style.marginTop = '-3rem'
+        e.preventDefault();
+        p.style.top = e.touches[0].clientY - startY + 'px';
+        p.style.left = e.touches[0].clientX - startX + 'px';
+        center = this.offsetLeft + (innerWidth * 0.2) / 2;
+        if (
+          center / innerWidth > 0 &&
+          center / innerWidth < 0.25 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          divs[0].style.marginTop = '-3rem';
         } else {
-          divs[0].style.marginTop = '0'
+          divs[0].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.25 && center / innerWidth < 0.5 && this.offsetTop / innerHeight > 0.6) {
-          divs[1].style.marginTop = '-3rem'
+        if (
+          center / innerWidth >= 0.25 &&
+          center / innerWidth < 0.5 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          divs[1].style.marginTop = '-3rem';
         } else {
-          divs[1].style.marginTop = '0'
+          divs[1].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.5 && center / innerWidth < 0.75 && this.offsetTop / innerHeight > 0.6) {
-          divs[2].style.marginTop = '-3rem'
+        if (
+          center / innerWidth >= 0.5 &&
+          center / innerWidth < 0.75 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          divs[2].style.marginTop = '-3rem';
         } else {
-          divs[2].style.marginTop = '0'
+          divs[2].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.75 && center / innerWidth < 1 && this.offsetTop / innerHeight > 0.6) {
-          divs[3].style.marginTop = '-3rem'
+        if (
+          center / innerWidth >= 0.75 &&
+          center / innerWidth < 1 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          divs[3].style.marginTop = '-3rem';
         } else {
-          divs[3].style.marginTop = '0'
+          divs[3].style.marginTop = '0';
         }
-      }
+      };
       p.ontouchend = function () {
-        if (center / innerWidth > 0 && center / innerWidth < 0.25 && this.offsetTop / innerHeight > 0.6) {
-          this.style.display = 'none'
-          divs[0].style.marginTop = '0'
+        if (
+          center / innerWidth > 0 &&
+          center / innerWidth < 0.25 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          this.style.display = 'none';
+          divs[0].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.25 && center / innerWidth < 0.5 && this.offsetTop / innerHeight > 0.6) {
-          this.style.display = 'none'
-          divs[1].style.marginTop = '0'
+        if (
+          center / innerWidth >= 0.25 &&
+          center / innerWidth < 0.5 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          this.style.display = 'none';
+          divs[1].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.5 && center / innerWidth < 0.75 && this.offsetTop / innerHeight > 0.6) {
-          this.style.display = 'none'
-          divs[2].style.marginTop = '0'
+        if (
+          center / innerWidth >= 0.5 &&
+          center / innerWidth < 0.75 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          this.style.display = 'none';
+          divs[2].style.marginTop = '0';
         }
-        if (center / innerWidth >= 0.75 && center / innerWidth < 1 && this.offsetTop / innerHeight > 0.6) {
-          this.style.display = 'none'
-          divs[3].style.marginTop = '0'
+        if (
+          center / innerWidth >= 0.75 &&
+          center / innerWidth < 1 &&
+          this.offsetTop / innerHeight > 0.6
+        ) {
+          this.style.display = 'none';
+          divs[3].style.marginTop = '0';
         }
-      }
+      };
     </script>
   </body>
 </html>

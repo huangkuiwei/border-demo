@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>判断元素是否滑动到了底部</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
@@ -44,11 +44,11 @@
 
     <script>
       new Vue({
-        mounted () {
+        mounted() {
           // 给body添加滚动事件
           document.body.onscroll = function () {
-            alert('Hello')
-          }
+            alert('Hello');
+          };
           // 无效
           // document.documentElement.onscroll = function () {
           //   alert('Hello')
@@ -59,14 +59,14 @@
           // })
         },
         methods: {
-          tip () {
-            let contain = document.getElementsByClassName('contain')[0]
+          tip() {
+            let contain = document.getElementsByClassName('contain')[0];
             if (contain.scrollTop + contain.clientHeight >= contain.scrollHeight) {
-              alert('到底啊')
+              alert('到底啊');
             }
-          }
-        }
-      }).$mount('#app')
+          },
+        },
+      }).$mount('#app');
     </script>
   </body>
 </html>

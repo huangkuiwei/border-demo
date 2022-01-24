@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>动态组件</title>
     <script src="../../js/Vue-2.5.17.js"></script>
     <style>
@@ -82,22 +82,22 @@
     <script>
       Vue.component('com-a', {
         template: `#com-a`,
-        data () {
+        data() {
           return {
-            menu: 1
-          }
-        }
-      })
+            menu: 1,
+          };
+        },
+      });
       Vue.component('com-b', {
-        template: `<div>World</div>`
-      })
+        template: `<div>World</div>`,
+      });
 
       new Vue({
         el: '#app',
         data: {
-          com: 'com-a'
-        }
-      })
+          com: 'com-a',
+        },
+      });
     </script>
   </body>
 </html>

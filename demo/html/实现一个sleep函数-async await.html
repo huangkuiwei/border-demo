@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>实现一个sleep函数-async await</title>
   </head>
   <body>
     <script>
-      async function sleep (time) {
-        return new Promise(resolve => {
+      async function sleep(time) {
+        return new Promise((resolve) => {
           setTimeout(() => {
-            resolve()
-          }, time)
-        })
+            resolve();
+          }, time);
+        });
       }
 
       // await必须在async函数的上下文中的。
-      async function fn () {
-        await sleep(3000)
-        console.log('3秒后执行')
+      async function fn() {
+        await sleep(3000);
+        console.log('3秒后执行');
       }
 
-      fn()
+      fn();
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>$emit $on</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -13,27 +13,27 @@
     <script>
       Vue.component('com-a', {
         template: '<div>hello world</div>',
-        created () {
+        created() {
           this.$on('test', (event) => {
-            console.log(event)
-          })
+            console.log(event);
+          });
         },
-        mounted () {
-          this.$emit('test', 'hello world')
-        }
-      })
+        mounted() {
+          this.$emit('test', 'hello world');
+        },
+      });
 
       const app = new Vue({
         el: '#app',
         methods: {
-          test (event) {
-            console.log(event)
+          test(event) {
+            console.log(event);
           },
-          created () {
-            console.log('created')
-          }
-        }
-      })
+          created() {
+            console.log('created');
+          },
+        },
+      });
     </script>
   </body>
 </html>

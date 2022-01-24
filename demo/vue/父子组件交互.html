@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>demo</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
@@ -9,10 +9,14 @@
     <div id="app">
       <p>{{message}}</p>
       <button @click="focus">按钮</button>
-      <com-a ref="comA" v-model="message" label="username" placeholder="enter your name" @focus="greet">
-        <template v-slot="{username}">
-          {{username}}
-        </template>
+      <com-a
+        ref="comA"
+        v-model="message"
+        label="username"
+        placeholder="enter your name"
+        @focus="greet"
+      >
+        <template v-slot="{username}"> {{username}} </template>
       </com-a>
     </div>
 
@@ -25,37 +29,37 @@
           </div>`,
         props: ['value', 'label'],
         inheritAttrs: false,
-        data () {
+        data() {
           return {
-            username: 'huang'
-          }
+            username: 'huang',
+          };
         },
         methods: {
-          focus () {
-            this.$refs.input.focus()
-          }
+          focus() {
+            this.$refs.input.focus();
+          },
         },
-        created () {
-          console.log(this.$attrs)
-          console.log(this.$listeners)
-          this.$root.message = 'world'
-        }
-      })
+        created() {
+          console.log(this.$attrs);
+          console.log(this.$listeners);
+          this.$root.message = 'world';
+        },
+      });
 
       new Vue({
         el: '#app',
         data: {
-          message: 'hello'
+          message: 'hello',
         },
         methods: {
-          greet () {
-            console.log('hello world')
+          greet() {
+            console.log('hello world');
           },
-          focus () {
-            this.$refs.comA.focus()
-          }
-        }
-      })
+          focus() {
+            this.$refs.comA.focus();
+          },
+        },
+      });
     </script>
   </body>
 </html>

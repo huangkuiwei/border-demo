@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>transition</title>
     <script src="../../js/Vue-2.5.17.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css" />
     <style>
       /*.v-enter, .v-leave-to {*/
       /*opacity: 0;*/
@@ -34,7 +34,12 @@
   <body>
     <div id="app">
       <button @click="show = !show">隐藏/显示</button>
-      <transition appear mode="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fade0utDown">
+      <transition
+        appear
+        mode="out-in"
+        enter-active-class="animated fadeInDown"
+        leave-active-class="animated fade0utDown"
+      >
         <com-a v-if="show"></com-a>
         <div v-else style="text-align: center">hello world</div>
       </transition>
@@ -42,15 +47,15 @@
 
     <script>
       Vue.component('com-a', {
-        template: '<div style="text-align: center"><h1>文章标题</h1><p>这是一段文字</p></div>'
-      })
+        template: '<div style="text-align: center"><h1>文章标题</h1><p>这是一段文字</p></div>',
+      });
 
       new Vue({
         el: '#app',
         data: {
-          show: true
-        }
-      })
+          show: true,
+        },
+      });
     </script>
   </body>
 </html>

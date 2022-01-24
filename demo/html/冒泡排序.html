@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>冒泡排序</title>
   </head>
   <body>
-
     <script>
-      let arr = [12, 34, 1, 45, 42, 64, 65, 2, 56, 43, 23, 21]
+      let arr = [12, 34, 1, 45, 42, 64, 65, 2, 56, 43, 23, 21];
 
       // arr.sort(Function)
       // arr.sort(function (a, b) {
@@ -16,21 +15,21 @@
       // console.log(arr)
 
       // 冒泡排序
-      function bubbleSort (arr) {
-        let swap
+      function bubbleSort(arr) {
+        let swap;
         for (let i = 0; i < arr.length; i++) {
           for (let j = 0; j < arr.length - i; j++) {
             if (arr[j] > arr[j + 1]) {
-              swap = arr[j]
-              arr[j] = arr[j + 1]
-              arr[j + 1] = swap
+              swap = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = swap;
             }
           }
         }
-        return arr
+        return arr;
       }
 
-      console.log(bubbleSort(arr))
+      console.log(bubbleSort(arr));
     </script>
   </body>
 </html>

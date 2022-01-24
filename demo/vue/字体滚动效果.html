@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <title>字体滚动效果</title>
     <script src="../../js/Vue-2.5.17.js"></script>
     <style>
@@ -40,41 +43,42 @@
             '恭喜XXX获得玛莎拉蒂代金券一张',
             '恭喜XXX获得iphone保护壳一个',
             '恭喜XXX获得现金0.01元',
-            '恭喜XXX获得保时捷5元优惠券'
+            '恭喜XXX获得保时捷5元优惠券',
           ],
-          boxStyle: {}
+          boxStyle: {},
         },
-        mounted () {
+        mounted() {
           this.$nextTick().then(() => {
-            this.boxWidth = this.$refs.box.clientWidth      // 元素 .box 的宽度
-            this.appWidth = this.$refs.app.clientWidth      // 元素 .app 的宽度
+            this.boxWidth = this.$refs.box.clientWidth; // 元素 .box 的宽度
+            this.appWidth = this.$refs.app.clientWidth; // 元素 .app 的宽度
             // 让 .box 元素从 .app 的最左侧开始滚动
             this.boxStyle = {
-              left: this.appWidth + 'px'
-            }
+              left: this.appWidth + 'px',
+            };
             setInterval(() => {
-              if (Math.abs(this.left) >= this.boxWidth) {             // 滚动完了
-                this.$refs.box.style.transition = 'none'             // 复原前取消动画
-                this.$refs.box.style.left = this.appWidth + 'px'     // 复原
-                this.left = parseInt(this.$refs.box.style.left || this.appWidth)   // 更新 this.left
+              if (Math.abs(this.left) >= this.boxWidth) {
+                // 滚动完了
+                this.$refs.box.style.transition = 'none'; // 复原前取消动画
+                this.$refs.box.style.left = this.appWidth + 'px'; // 复原
+                this.left = parseInt(this.$refs.box.style.left || this.appWidth); // 更新 this.left
               } else {
-                this.$refs.box.style.transition = 'all .1s linear'       // 启动滚动过程中的动画
-                this.left = parseInt(this.$refs.box.style.left || this.appWidth)   // 更新 this.left
-                this.$refs.box.style.left = this.left - 10 + 'px'         // .box 的 left 慢慢减小
+                this.$refs.box.style.transition = 'all .1s linear'; // 启动滚动过程中的动画
+                this.left = parseInt(this.$refs.box.style.left || this.appWidth); // 更新 this.left
+                this.$refs.box.style.left = this.left - 10 + 'px'; // .box 的 left 慢慢减小
               }
-            }, 100)
-          })
+            }, 100);
+          });
         },
         computed: {
-          total () {
-            let total = ''
-            this.list.forEach(item => {
-              total += item
-            })
-            return total
-          }
-        }
-      })
+          total() {
+            let total = '';
+            this.list.forEach((item) => {
+              total += item;
+            });
+            return total;
+          },
+        },
+      });
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>e.target和e.currentTarget</title>
   </head>
   <body>
@@ -11,11 +11,11 @@
       <li>3</li>
     </ul>
     <script>
-      let ul = document.getElementsByTagName('ul')[0]
+      let ul = document.getElementsByTagName('ul')[0];
       ul.onclick = function (e) {
-        console.log(e.target)          //li元素  点了谁就是谁
-        console.log(e.currentTarget)    //ul元素  事件绑定了谁就是谁
-      }
+        console.log(e.target); //li元素  点了谁就是谁
+        console.log(e.currentTarget); //ul元素  事件绑定了谁就是谁
+      };
     </script>
   </body>
 </html>

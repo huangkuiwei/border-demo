@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>文件上传</title>
     <script src="../../js/Vue-2.5.17.js"></script>
     <style>
@@ -36,37 +36,37 @@
         props: {
           accept: [String],
           maxSize: [Number],
-          max: [Number]
+          max: [Number],
         },
-        mounted () {
-          this.$el.onclick = this.pick
-          this.$input = document.createElement('input')
-          this.$input.type = 'file'
-          this.$input.accept = this.accept
-          this.$input.onchange = this.upload
+        mounted() {
+          this.$el.onclick = this.pick;
+          this.$input = document.createElement('input');
+          this.$input.type = 'file';
+          this.$input.accept = this.accept;
+          this.$input.onchange = this.upload;
         },
         methods: {
-          pick () {
-            this.$input.value = ''
-            //模拟用户点击
-            this.$input.click()
+          pick() {
+            this.$input.value = '';
+            // 模拟用户点击
+            this.$input.click();
           },
-          upload (e) {
+          upload(e) {
             if (this.maxSize && this.maxSize < e.target.files[0].size / 1024) {
-              console.log('文件过大')
-              return
+              console.log('文件过大');
+              return;
             }
-            this.$emit('upload-success', e.target.files[0].name)
-          }
-        }
-      })
+            this.$emit('upload-success', e.target.files[0].name);
+          },
+        },
+      });
 
       new Vue({
         el: '#app',
         data: {
-          imageList: []
-        }
-      })
+          imageList: [],
+        },
+      });
     </script>
   </body>
 </html>

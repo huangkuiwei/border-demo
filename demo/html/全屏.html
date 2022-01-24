@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>全屏</title>
     <style>
       #app {
@@ -12,18 +12,20 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      123
-    </div>
+    <div id="app">123</div>
     <button>点击全屏</button>
 
     <script>
-      let app = document.getElementById('app')
-      let btn = document.getElementsByTagName('button')[0]
+      let app = document.getElementById('app');
+      let btn = document.getElementsByTagName('button')[0];
       btn.onclick = function () {
-        let rfs = app.requestFullScreen || app.webkitRequestFullScreen || app.mozRequestFullScreen || app.msRequestFullScreen
-        rfs.call(app)
-      }
+        let rfs =
+          app.requestFullScreen ||
+          app.webkitRequestFullScreen ||
+          app.mozRequestFullScreen ||
+          app.msRequestFullScreen;
+        rfs.call(app);
+      };
     </script>
   </body>
 </html>

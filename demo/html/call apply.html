@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>call apply</title>
   </head>
   <body>
     <script>
-      function SuperClass () {
-        this.a = 1
+      function SuperClass() {
+        this.a = 1;
         this.print = function () {
-          console.log(this.a)
-        }
+          console.log(this.a);
+        };
       }
 
-      function SubClass () {
-        SuperClass.call(this)     //实现继承
+      function SubClass() {
+        SuperClass.call(this); //实现继承
         /*
         等价于
         this.a = 1;
@@ -24,8 +24,8 @@
          */
       }
 
-      let o2 = new SubClass()
-      o2.print()    // 1
+      let o2 = new SubClass();
+      o2.print(); // 1
     </script>
   </body>
 </html>

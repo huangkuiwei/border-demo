@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <title>红包雨效果</title>
     <script src="../../js/Vue-2.5.17.js"></script>
     <style>
@@ -10,7 +13,8 @@
         margin: 0;
         padding: 0;
       }
-      html, body {
+      html,
+      body {
         height: 100%;
       }
       #app {
@@ -35,37 +39,38 @@
   </head>
   <body>
     <div id="app">
-      <img v-for="(item, index) in redPackList"
-           @animationend="hiddenRedPack(index)"
-           v-if="item.show"
-           :style="{animation: 'down linear ' + item.time, left: item.left}"
-           :src="item.url"
-           :key="index"
-      >
+      <img
+        v-for="(item, index) in redPackList"
+        @animationend="hiddenRedPack(index)"
+        v-if="item.show"
+        :style="{animation: 'down linear ' + item.time, left: item.left}"
+        :src="item.url"
+        :key="index"
+      />
     </div>
 
     <script>
       new Vue({
         el: '#app',
         data: {
-          redPackList: []
+          redPackList: [],
         },
-        created () {
+        created() {
           setInterval(() => {
             this.redPackList.push({
               url: 'http://pic.51yuansu.com/pic3/cover/03/08/08/5b3d5670ee9ac_610.jpg',
               time: Math.random() * (6 - 1) + 1 + 's',
               left: Math.random() * (screen.width - 100) + 'px',
-              show: true
-            })
-          }, 300)
+              show: true,
+            });
+          }, 300);
         },
         methods: {
-          hiddenRedPack (index) {
-            this.$set(this.redPackList[index], 'show', false)
-          }
-        }
-      })
+          hiddenRedPack(index) {
+            this.$set(this.redPackList[index], 'show', false);
+          },
+        },
+      });
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>$attrs</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -12,7 +12,7 @@
     <template id="com-a">
       <div>
         <p>这是一段文字</p>
-        <input type="text" :placeholder="$attrs.placeholder">
+        <input type="text" :placeholder="$attrs.placeholder" />
       </div>
     </template>
     <script>
@@ -20,14 +20,14 @@
         template: '#com-a',
         // 组件的根元素不会继承
         inheritAttrs: false,
-        created () {
-          console.log(this.$attrs)
-        }
-      })
+        created() {
+          console.log(this.$attrs);
+        },
+      });
 
       new Vue({
-        el: '#app'
-      })
+        el: '#app',
+      });
     </script>
   </body>
 </html>

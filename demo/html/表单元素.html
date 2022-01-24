@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>表单元素</title>
   </head>
   <body>
     <!-- 文本框 -->
     <div>
       <span>姓名：</span>
-      <input type="text" id="name" value="hello world">
+      <input type="text" id="name" value="hello world" />
       <button onclick="getNameValue()">按钮</button>
     </div>
     <!-- 单选框 -->
     <div>
       <span>性别：</span>
-      <input value="男" type="radio" name="sex">男
-      <input value="女" type="radio" name="sex" checked>女
+      <input value="男" type="radio" name="sex" />男
+      <input value="女" type="radio" name="sex" checked />女
       <button onclick="getSexValue()">按钮</button>
     </div>
     <!-- 多选框 -->
     <div>
       <span>爱好：</span>
-      <input name="hobby" value="足球" type="checkbox">足球
-      <input name="hobby" value="篮球" type="checkbox" checked>篮球
-      <input name="hobby" value="乒乓球" type="checkbox">乒乓球
+      <input name="hobby" value="足球" type="checkbox" />足球
+      <input name="hobby" value="篮球" type="checkbox" checked />篮球
+      <input name="hobby" value="乒乓球" type="checkbox" />乒乓球
       <button onclick="getHobbyValue()">按钮</button>
     </div>
     <!-- 下拉框 -->
@@ -46,35 +46,35 @@
     </div>
     <script>
       // 获取文本框的值
-      function getNameValue () {
-        let name = document.getElementById('name')
-        console.log(name.value)
+      function getNameValue() {
+        let name = document.getElementById('name');
+        console.log(name.value);
       }
 
       // 获取单选框的值
-      function getSexValue () {
-        let sex = document.querySelector('input[name="sex"]:checked')
-        console.log(sex.value)
+      function getSexValue() {
+        let sex = document.querySelector('input[name="sex"]:checked');
+        console.log(sex.value);
       }
 
       // 获取多选框的值
-      function getHobbyValue () {
-        let hobby = document.getElementsByName('hobby')
-        let hobbyList = []
-        hobby.forEach(item => {
+      function getHobbyValue() {
+        let hobby = document.getElementsByName('hobby');
+        let hobbyList = [];
+        hobby.forEach((item) => {
           if (item.checked) {
-            hobbyList.push(item.value)
+            hobbyList.push(item.value);
           }
-        })
-        console.log(hobbyList)
+        });
+        console.log(hobbyList);
       }
 
       // 获取下拉框的值
-      function getOldValue () {
-        let old = document.getElementById('old')
+      function getOldValue() {
+        let old = document.getElementById('old');
         for (let i = 0; i < old.options.length; i++) {
           if (old.options[i].selected) {
-            console.log(old.options[i].value)
+            console.log(old.options[i].value);
           }
         }
       }

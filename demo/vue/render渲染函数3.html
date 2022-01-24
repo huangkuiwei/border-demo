@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>render渲染函数3</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
   <body>
     <div id="app">
-      <com-a name="hello world" :grade="1">
-        Hello World
-      </com-a>
+      <com-a name="hello world" :grade="1"> Hello World </com-a>
     </div>
 
     <script>
       Vue.component('com-a', {
-        render (h) {
-          return h(
-            'h' + this.grade,
-            [
-              h(
-                'a',
-                {
-                  attrs: {
-                    name: this.name,
-                    href: '#' + this.name
-                  }
+        render(h) {
+          return h('h' + this.grade, [
+            h(
+              'a',
+              {
+                attrs: {
+                  name: this.name,
+                  href: '#' + this.name,
                 },
-                [this.$slots.default]
-              )
-            ]
-          )
+              },
+              [this.$slots.default],
+            ),
+          ]);
         },
         props: {
           grade: Number,
-          name: String
-        }
-      })
+          name: String,
+        },
+      });
 
       new Vue({
-        el: '#app'
-
-      })
+        el: '#app',
+      });
     </script>
   </body>
 </html>

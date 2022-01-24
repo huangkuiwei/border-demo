@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>简单的倒计时</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -15,24 +15,24 @@
         el: '#app',
         data: {
           startTime: Date.now(),
-          endTime: new Date('2020-12-12 12:12:12').getTime()
+          endTime: new Date('2020-12-12 12:12:12').getTime(),
         },
-        created () {
+        created() {
           setInterval(() => {
-            this.startTime = this.startTime + 1000
-          }, 1000)
+            this.startTime = this.startTime + 1000;
+          }, 1000);
         },
         computed: {
-          time () {
-            let t = this.endTime - this.startTime
-            let d = Math.floor(t / 1000 / 3600 / 24)
-            let h = Math.floor((t / 1000 / 3600 / 24 - d) * 24)
-            let m = Math.floor(((t / 1000 / 3600 / 24 - d) * 24 - h) * 60)
-            let s = Math.floor((((t / 1000 / 3600 / 24 - d) * 24 - h) * 60 - m) * 60)
-            return [d, h, m, s]
-          }
-        }
-      })
+          time() {
+            let t = this.endTime - this.startTime;
+            let d = Math.floor(t / 1000 / 3600 / 24);
+            let h = Math.floor((t / 1000 / 3600 / 24 - d) * 24);
+            let m = Math.floor(((t / 1000 / 3600 / 24 - d) * 24 - h) * 60);
+            let s = Math.floor((((t / 1000 / 3600 / 24 - d) * 24 - h) * 60 - m) * 60);
+            return [d, h, m, s];
+          },
+        },
+      });
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>tab切换</title>
     <style>
       * {
@@ -40,26 +40,24 @@
   </head>
   <body>
     <div class="box">
-      <div class="tab">
-        <span>tab1</span><span>tab2</span><span>tab3</span>
-      </div>
+      <div class="tab"><span>tab1</span><span>tab2</span><span>tab3</span></div>
       <div class="content"></div>
     </div>
 
     <script>
-      let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容']
-      let spans = document.getElementsByTagName('span')
-      let content = document.getElementsByClassName('content')[0]
-      content.innerHTML = textList[0]
-      spans[0].style.background = 'red'
+      let textList = ['我是tab1的内容', '我是tab2的内容', '我是tab3的内容'];
+      let spans = document.getElementsByTagName('span');
+      let content = document.getElementsByClassName('content')[0];
+      content.innerHTML = textList[0];
+      spans[0].style.background = 'red';
       for (let i = 0; i < spans.length; i++) {
         spans[i].onclick = function () {
-          content.innerHTML = textList[i]
+          content.innerHTML = textList[i];
           for (let j = 0; j < spans.length; j++) {
-            spans[j].style.background = 'none'
+            spans[j].style.background = 'none';
           }
-          this.style.background = 'red'
-        }
+          this.style.background = 'red';
+        };
       }
     </script>
   </body>

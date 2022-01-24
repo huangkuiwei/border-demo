@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>demo</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
@@ -21,79 +21,79 @@
 
     <script>
       Vue.component('com-a', {
-        render (h) {
+        render(h) {
           return h(
             'div',
             {
               class: {
-                box: true
+                box: true,
               },
               style: {
-                'font-size': '20px'
+                'font-size': '20px',
               },
               attrs: {
-                id: 'pox'
+                id: 'pox',
               },
               on: {
-                click: () => console.log('hello')
+                click: () => console.log('hello'),
               },
               ref: 'myRef',
-              key: 'myKey'
+              key: 'myKey',
             },
             [
               this.$slots.default,
               this.$scopedSlots.title({
-                title: this.title
+                title: this.title,
               }),
               this.$scopedSlots.content({
-                content: this.content
+                content: this.content,
               }),
-              this.$slots.footer
-            ]
-          )
+              this.$slots.footer,
+            ],
+          );
         },
-        data () {
+        data() {
           return {
             title: 'Hello World',
-            content: '我是文本内容'
-          }
-        }
-      })
+            content: '我是文本内容',
+          };
+        },
+      });
 
       new Vue({
         el: '#app',
-        render (h) {
+        render(h) {
           return h(
             'com-a',
             {
               scopedSlots: {
-                title: props => {
-                  return h('h1', props.title)
+                title: (props) => {
+                  return h('h1', props.title);
                 },
-                content: props => {
-                  return h('p', props.content)
-                }
-              }
+                content: (props) => {
+                  return h('p', props.content);
+                },
+              },
             },
             [
               h(
                 'header',
                 {
-                  slot: 'default'
+                  slot: 'default',
                 },
-                'default'
+                'default',
               ),
               h(
                 'footer',
                 {
-                  slot: 'footer'
+                  slot: 'footer',
                 },
-                'footer'
-              )
-            ]
-          )
-        }
-      })
+                'footer',
+              ),
+            ],
+          );
+        },
+      });
     </script>
   </body>
 </html>

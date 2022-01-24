@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>demo</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
   <body>
     <div id="app">
-      <button-fun @click="greet">
-        button
-      </button-fun>
+      <button-fun @click="greet"> button </button-fun>
     </div>
 
     <script>
       // 如果你使用基于模板的函数式组件，那么你还需要手动添加特性和监听器。
       // 可以使用 data.attrs 传递任何 HTML 特性，也可以使用 listeners (即 data.on 的别名) 传递任何事件监听器。
-      //在普通组件中，没有被定义为 prop 的特性会自动添加到组件的根元素上，将现有的同名特性替换或与其智能合并。然而函数式组件要求你显式定义该行为：
+      // 在普通组件中，没有被定义为 prop 的特性会自动添加到组件的根元素上，将现有的同名特性替换或与其智能合并。然而函数式组件要求你显式定义该行为：
       Vue.component('button-fun', {
         functional: true,
-        render (h, { listeners, data, children }) {
-          return h(
-            'button',
-            data,
-            children
-          )
-        }
-      })
+        render(h, { listeners, data, children }) {
+          return h('button', data, children);
+        },
+      });
 
       new Vue({
         el: '#app',
         methods: {
-          greet () {
-            console.log('hello')
-          }
-        }
-      })
+          greet() {
+            console.log('hello');
+          },
+        },
+      });
     </script>
   </body>
 </html>

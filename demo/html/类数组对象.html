@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>类数组对象</title>
   </head>
   <body>
     <script>
-      /*
-      特点：
-      1.拥有length属性，其它属性（索引）为非负整数
-      2.不具有数组所具有的方法
-      eg：
-      var a = {'1':'gg','2':'love','4':'meimei',length:5};
-      与数组区别：
-      1.一个是对象，一个是数组
-      2.当新元素被添加时，数组的length属性的值会自动更新，类数组对象则不会
-      3.设置数组的length属性可扩展或截断数组，而对于类数组对象来说仅仅是改变了一个属性的值而已
-      4.类数组不能调用数组方法
+      /**
+       * 特点：
+       * 1.拥有length属性，其它属性（索引）为非负整数
+       * 2.不具有数组所具有的方法
+       * eg：
+       * var a = {'1':'gg','2':'love','4':'meimei',length:5};
+       * 与数组区别：
+       * 1.一个是对象，一个是数组
+       * 2.当新元素被添加时，数组的length属性的值会自动更新，类数组对象则不会
+       * 3.设置数组的length属性可扩展或截断数组，而对于类数组对象来说仅仅是改变了一个属性的值而已
+       * 4.类数组不能调用数组方法
        */
 
-      //判断对象是不是类数组对象
-      function isArrayLike (o) {
-        return o &&
-          typeof o === 'object' &&                //o的类型是否为object
-          isFinite(o.length) &&                    //o是否为有限值
-          o.length >= 0 &&                         //o.length是否为非0数
-          o.length === Math.floor(o.length) &&     //o.length是否为整数
-          o.length < 4294967296                    //o.length是否小于4294967296
+      // 判断对象是不是类数组对象
+      function isArrayLike(o) {
+        return (
+          o &&
+          typeof o === 'object' && //o的类型是否为object
+          isFinite(o.length) && //o是否为有限值
+          o.length >= 0 && //o.length是否为非0数
+          o.length === Math.floor(o.length) && //o.length是否为整数
+          o.length < 4294967296
+        ); // o.length是否小于4294967296
       }
 
-      let likeArr = {}
-      let i = 0
+      let likeArr = {};
+      let i = 0;
       for (; i < 10; i++) {
-        likeArr[i] = i * 2
+        likeArr[i] = i * 2;
       }
-      likeArr.length = i
-      console.log(isArrayLike(likeArr))      //true
-      console.log(likeArr)    //{0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18, length: 10}
+      likeArr.length = i;
+      console.log(isArrayLike(likeArr)); // true
+      console.log(likeArr); // {0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18, length: 10}
     </script>
   </body>
 </html>

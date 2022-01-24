@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>sync修饰符</title>
     <script src="../../js/Vue-2.5.17.js"></script>
   </head>
@@ -18,18 +18,18 @@
         props: ['message'],
         template: '<div>{{message}}<button @click="changeMessage">修改message</button></div>',
         methods: {
-          changeMessage () {
-            this.$emit('update:message', 'Hello Vue.js')
-          }
-        }
-      })
+          changeMessage() {
+            this.$emit('update:message', 'Hello Vue.js');
+          },
+        },
+      });
 
       new Vue({
         el: '#app',
         data: {
-          message: 'Hello World'
-        }
-      })
+          message: 'Hello World',
+        },
+      });
     </script>
   </body>
 </html>
