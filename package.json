@@ -1,7 +1,7 @@
 {
-  "name": "border-demo",
+  "name": "record-demo",
   "version": "1.0.0",
-  "description": "border-demo",
+  "description": "record-demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huangkuiwei/border-demo/issues"
+    "url": "https://github.com/huangkuiwei/record-demo/issues"
   },
-  "homepage": "https://github.com/huangkuiwei/border-demo#readme",
+  "homepage": "https://github.com/huangkuiwei/record-demo#readme",
   "devDependencies": {
     "prettier": "^2.5.1"
   }
