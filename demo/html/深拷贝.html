@@ -6,27 +6,27 @@
   </head>
   <body>
     <script>
-      //考虑到了数组、对象、函数三种引用类型
+      // 考虑到了数组、对象、函数三种引用类型
       function deepCopy(o) {
         if (o instanceof Array) {
-          //数组
+          // 数组
           let n = [];
           for (let i = 0; i < o.length; i++) {
             n[i] = deepCopy(o[i]);
           }
           return n;
         } else if (o instanceof Function) {
-          //函数
+          // 函数
           return new Function('return ' + o.toString())();
         } else if (o instanceof Object) {
-          //对象
+          // 对象
           let n = {};
           for (let i in o) {
             n[i] = deepCopy(o[i]);
           }
           return n;
         } else {
-          //基本类型，无需处理
+          // 基本类型，无需处理
           return o;
         }
       }
@@ -43,10 +43,10 @@
       obj.like.sport = '足球';
       obj.say.prototype.a = 1;
       let s1 = new obj.say();
-      console.log(s1.a); //1
+      console.log(s1.a); // 1
       console.log(obj);
       let s2 = new copyObj.say();
-      console.log(s2.a); //undefined
+      console.log(s2.a); // undefined
       console.log(copyObj);
     </script>
   </body>
